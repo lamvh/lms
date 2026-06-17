@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens live in tailwind.config.ts as named theme tokens.
+   The only CSS var retained is the one <image-slot> reads for its corner scale. */
+:root {
+  --radius-scale: 1;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: theme('fontFamily.body');
+  color: theme('colors.ink.700');
+  background: theme('colors.bg');
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}

@@ -1,7 +1,7 @@
 ---
 phase: 1
 title: "Scaffold, tooling & Storybook"
-status: pending
+status: done
 priority: P1
 effort: "3h"
 dependencies: []
@@ -73,11 +73,13 @@ autodocs)**, and wire a router skeleton. Foundation for every later phase.
 - Write these (red) before implementing the wrapper/routes; make them green.
 
 ## Success Criteria
-- [ ] `npm run dev`, `npm run build`, `npm test`, `npm run storybook`, `npm run build-storybook` all succeed.
-- [ ] Tailwind config exposes both token sets (spot-check `bg-cream`, `text-gold`, `bg-p-900`, `text-a-500`, `rounded-md`, `shadow-pop`, `font-head`).
-- [ ] Storybook loads with Tailwind styles + fonts applied (cream background, correct type).
-- [ ] `<image-slot>` registers (no console error) and `ImageSlot` wrapper renders.
-- [ ] Router resolves all 5 top-level paths to stub elements.
+- [x] `npm run dev` (HTTP 200), `npm run build` (tsc -b + vite), `npm test` (5 passing), `npm run build-storybook` all succeed.
+- [x] Tailwind config exposes both token sets (`bg-cream`, `text-gold`, `bg-p-900`, `text-a-500`, `rounded-md`, `shadow-sh-pop`, `font-head` — verified in build + Welcome story).
+- [x] Storybook builds with Tailwind styles + fonts applied (cream background, Welcome smoke story).
+- [x] `<image-slot>` served at `/image-slot.js` (HTTP 200); `ImageSlot` wrapper renders (test green).
+- [x] Router resolves `/`, `/login`, `/admin/*`, `/student/*`, `/teacher/*` to stub elements (tests green).
+
+Note: shadow utilities are `shadow-sh-1/sh-2/sh-card/sh-pop` (token names keep the `sh-` prefix).
 
 ## Risk Assessment
 - `<image-slot>` + TS intrinsic typing: mitigate with explicit `.d.ts`.

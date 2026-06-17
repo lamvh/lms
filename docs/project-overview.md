@@ -150,6 +150,16 @@ See the plan for phase detail and status.
 
 > Add an entry per feature / change. Format: `### YYYY-MM-DD · summary` then bullets.
 
+### 2026-06-17 · Phase 1 done: scaffold + tooling + Storybook
+- Vite + React 18 + TypeScript (strict) scaffolded; React Router skeleton with 5 stub routes.
+- All design tokens defined as Tailwind theme tokens in `tailwind.config.ts` (charcoal `p-*`, gold `a-*`,
+  warm `ink-*`/surfaces/status, landing cream+gold, fonts head/body/mono, radii, shadows).
+- `<image-slot>` custom element wired (`public/image-slot.js` + typed `ImageSlot` wrapper); `Ms-Jane.png`
+  bundled locally.
+- Vitest + RTL set up; 5 tests passing (ImageSlot wrapper, route resolution). Storybook 8 (Vite builder,
+  Tailwind preview, autodocs) builds with a Welcome smoke story.
+- Verified: `dev` (HTTP 200), `build`, `test`, `build-storybook` all green.
+
 ### 2026-06-17 · Plan restructured: components + Storybook first
 - Fetched the `EduNex Components.html` build contract from the Claude Design handoff bundle
   (saved to `design/prototype/`), plus `design-summary.md` and chat transcripts (`design/chats/`).
