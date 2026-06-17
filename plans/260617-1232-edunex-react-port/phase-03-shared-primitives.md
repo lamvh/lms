@@ -1,7 +1,7 @@
 ---
 phase: 3
 title: "Shared primitives"
-status: pending
+status: done
 priority: P1
 effort: "4h"
 dependencies: [2]
@@ -61,9 +61,9 @@ the build contract exists and is browsable in Storybook.
 - `Field.test.tsx`: `error` applies error styling; `disabled` blocks input.
 
 ## Success Criteria
-- [ ] All 13 primitives render and match prototype styling across their states.
-- [ ] Each primitive has a stories file; Storybook section mirrors the Components page section 02.
-- [ ] Tests green.
+- [x] All 13 primitives render and match prototype styling across their states.
+- [x] Each primitive has a stories file; Storybook section mirrors the Components page section 02.
+- [x] Tests green (23 total); `build` + `build-storybook` pass.
 
 ## Risk Assessment
 - Button/Chip/Field have no `ui.jsx` source (only CSS classes in the prototype): derive exact look from

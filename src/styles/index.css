@@ -22,3 +22,26 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+/* Entrance animation shared by Modal/Sheet (ported from the prototype). */
+@keyframes vz-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: vz-rise 0.4s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+.sheet-rise {
+  animation: vz-rise 0.28s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

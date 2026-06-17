@@ -54,7 +54,7 @@ after the system exists.
 |-------|------|--------|--------|
 | 1 | [Scaffold, tooling & Storybook](./phase-01-scaffold-tooling.md) | Done | 3h |
 | 2 | [Foundations & Icons](./phase-02-foundations-icons.md) | Done | 2h |
-| 3 | [Shared primitives](./phase-03-shared-primitives.md) | Pending | 4h |
+| 3 | [Shared primitives](./phase-03-shared-primitives.md) | Done | 4h |
 | 4 | [Composites & sample data](./phase-04-composites-data.md) | Pending | 4h |
 | 5 | [Landing page](./phase-05-landing-page.md) | Pending | 5h |
 | 6 | [Login & app shell](./phase-06-login-app-shell.md) | Pending | 3h |

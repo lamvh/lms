@@ -150,6 +150,15 @@ See the plan for phase detail and status.
 
 > Add an entry per feature / change. Format: `### YYYY-MM-DD · summary` then bullets.
 
+### 2026-06-17 · Phase 3 done: shared primitives
+- Ported all 13 section-02 primitives to Tailwind components: Button (5 variants · sm · icon · loading ·
+  disabled), StatusBadge, Chip, Tag, Field, Avatar, FileIcon, Segmented, Toggle, Stat, Tip, Modal, Sheet.
+- `shade()` color helper in `src/lib/color.ts`. Modal/Sheet overlays are frame-scoped (`absolute inset-0`),
+  not body portals, matching the prototype; shared `vz-rise`/`spin` keyframes in index.css.
+- 14 new tests (Button, Toggle, Segmented, Field, Avatar, StatusBadge, shade) — 23 total passing.
+- One `*.stories.tsx` per primitive with states from the Components page; Storybook section Primitives/*.
+- Verified: 23 tests, `build`, `build-storybook` all green.
+
 ### 2026-06-17 · Phase 2 done: foundations & icons
 - `Icon` component ported (57 stroke glyphs, typed `IconName`, `size`/`stroke`, `file` fallback for
   unknown names); `ICON_NAMES` export. 4 tests passing.
