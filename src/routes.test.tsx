@@ -28,4 +28,9 @@ describe('app routes', () => {
     renderAt('/student');
     expect(screen.getByText(/Xin chào/)).toBeInTheDocument();
   });
+
+  it('mounts the teacher app under /teacher', () => {
+    renderAt('/teacher');
+    expect(screen.getByText('Good afternoon, Jane 👋')).toBeInTheDocument();
+  });
 });

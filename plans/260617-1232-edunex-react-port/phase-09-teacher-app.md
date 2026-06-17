@@ -1,7 +1,7 @@
 ---
 phase: 9
 title: "Teacher app"
-status: pending
+status: done
 priority: P3
 effort: "3h"
 dependencies: [6]
@@ -38,9 +38,9 @@ flag gaps rather than inventing screens.
 - `TeacherApp.test.tsx`: renders Ms. Jane's classes (c1 "VIP Career Program", c2 "CV & Interview Mastery"); shows pending submissions for her classes; sign-out navigates to `/login`.
 
 ## Success Criteria
-- [ ] `/teacher` renders the ported coach app with coach-scoped data.
-- [ ] Gaps vs admin documented, not invented.
-- [ ] Tests green.
+- [x] `/teacher` renders the ported coach app with coach-scoped data.
+- [x] Gaps vs admin documented, not invented.
+- [x] Tests green.
 
 ## Risk Assessment
 - Partial role: avoid scope creep by building admin-equivalent teacher screens not present in source. Confirm with user if a missing teacher screen is actually wanted before building.

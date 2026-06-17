@@ -16,9 +16,7 @@ import { People } from './app/admin/People';
 import { StudentDetail } from './app/admin/StudentDetail';
 import { Settings } from './app/admin/Settings';
 import { StudentApp } from './app/student/StudentApp';
-
-/* Role-app stub — teacher P9. */
-const TeacherStub = () => <div data-testid="teacher-stub">Teacher app</div>;
+import { TeacherApp } from './app/teacher/TeacherApp';
 
 /** Route table shared by the browser router (app) and memory router (tests). */
 export const routes: RouteObject[] = [
@@ -41,7 +39,7 @@ export const routes: RouteObject[] = [
     ],
   },
   { path: '/student/*', element: <StudentApp /> },
-  { path: '/teacher/*', element: <TeacherStub /> },
+  { path: '/teacher/*', element: <TeacherApp /> },
 ];
 
 export const router = createBrowserRouter(routes);

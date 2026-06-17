@@ -150,6 +150,15 @@ See the plan for phase detail and status.
 
 > Add an entry per feature / change. Format: `### YYYY-MM-DD · summary` then bullets.
 
+### 2026-06-17 · Phase 9 done: teacher app
+- Built the coach desktop workspace (`TeacherApp`, Ms. Jane) at `/teacher`: sidebar with badge counts
+  (today sessions, submissions to mark) + 5 views — Today's Classes, My Classes, Homework to Mark
+  (grade flow), Attendance (present/late/absent per student), Student Progress, plus class detail
+  (ZoomPanel + roster + materials). Reuses ToastProvider; `pen` icon mapped to `edit`.
+- Mount `TeacherApp` at `/teacher`; 4 new tests (greeting, nav, attendance, sign-out) — 61 total.
+- **All role apps complete** — login + admin + student + teacher fully functional.
+- Verified: 61 tests, `build`, `build-storybook` all green.
+
 ### 2026-06-17 · Phase 8 done: student app
 - Built the student mobile portal (`StudentApp`) at `/student`: bottom-tab nav (Home, Courses,
   Homework, Profile) + sub-pages (class detail, results, payments). Centred mobile frame on desktop.
