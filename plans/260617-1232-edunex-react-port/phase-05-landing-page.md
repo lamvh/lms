@@ -1,7 +1,7 @@
 ---
 phase: 5
 title: "Landing page"
-status: pending
+status: done
 priority: P1
 effort: "5h"
 dependencies: [4]
@@ -46,10 +46,10 @@ ships independently of the LMS app. Full Tailwind, pixel-matched to the prototyp
 - Assert no em dash (—) in rendered text via a guard test.
 
 ## Success Criteria
-- [ ] All 10 sections present and visually match prototype at desktop + mobile.
-- [ ] Hamburger menu works; anchor links smooth-scroll; "Đăng nhập" → `/login`.
-- [ ] Images render via `ImageSlot`; no console errors.
-- [ ] Tests green; em-dash guard passes.
+- [x] All 10 sections present and visually match prototype at desktop + mobile.
+- [x] Hamburger menu works; anchor links smooth-scroll; "Đăng nhập" → `/login`.
+- [x] Images render via `ImageSlot`; no console errors.
+- [x] Tests green; em-dash guard passes.
 
 ## Risk Assessment
 - Pixel drift from full Tailwind rewrite: verify section-by-section against prototype; use arbitrary values for exact `font-size`/`gap`/`radius`.

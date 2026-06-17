@@ -9,9 +9,9 @@ function renderAt(path: string) {
 }
 
 describe('app routes', () => {
-  it('mounts the landing stub at /', () => {
+  it('mounts the landing page at /', () => {
     renderAt('/');
-    expect(screen.getByTestId('landing-stub')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('chinh phục giấc mơ');
   });
 
   it('mounts the login stub at /login', () => {

@@ -150,6 +150,17 @@ See the plan for phase detail and status.
 
 > Add an entry per feature / change. Format: `### YYYY-MM-DD · summary` then bullets.
 
+### 2026-06-17 · Phase 5 done: landing page
+- Ported `EduNex Landing.html` (10 sections) to React at `/`: Nav (sticky + mobile hamburger menu),
+  Hero, D.C.I, English feature, Founder, Packages (4 tiers, Platinum "popular"), Blog, Testimonials,
+  CTA band, Footer. Verbatim Vietnamese copy, no em dash. Static content in `landing-data.ts`.
+- Full Tailwind port using the prototype's exact tokens + breakpoints (`max-[980px]/[560px]/[400px]`);
+  `ImageSlot` for hero/founder/English photos (local `ms-jane.png` / `english-class.png`).
+- `LandingPage` mounted at `/`; "Đăng nhập" / app links route to `/login`.
+- 7 new tests (sections, 4 tiers + prices, login link, em-dash guard, hamburger toggle) — 40 total.
+- Verified: 40 tests, `build`, `build-storybook`, dev server (HTTP 200 + assets) all green.
+- Not yet done: pixel-by-pixel visual diff vs prototype (structure/tokens ported from source CSS).
+
 ### 2026-06-17 · Phase 4 done: composites & data (component library complete)
 - Typed sample-data model `src/data/edunex.ts` + `src/types/edunex.ts` (teachers, classes, students,
   materials, templates, znsLog, homework, submissions, results, payments, stats + lookups), preserving
