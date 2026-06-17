@@ -1,7 +1,7 @@
 ---
 phase: 6
 title: "Login & app shell"
-status: pending
+status: done
 priority: P1
 effort: "3h"
 dependencies: [4]
@@ -42,9 +42,9 @@ routing that replaces the prototype's `useState('screen')` switcher.
 - `useToasts.test.ts`: `notify()` adds a toast and auto-removes after timeout (fake timers).
 
 ## Success Criteria
-- [ ] Login renders + routes by role; shell nav drives admin sub-routes with correct active state/title.
-- [ ] Toasts appear and auto-dismiss; sign-out works.
-- [ ] Tests green.
+- [x] Login renders + routes by role; shell nav drives admin sub-routes with correct active state/title.
+- [x] Toasts appear and auto-dismiss; sign-out works.
+- [x] Tests green.
 
 ## Risk Assessment
 - State-to-route mapping (classId/studentId were component state, now route params): ensure detail routes read params.

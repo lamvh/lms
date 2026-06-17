@@ -150,6 +150,16 @@ See the plan for phase detail and status.
 
 > Add an entry per feature / change. Format: `### YYYY-MM-DD · summary` then bullets.
 
+### 2026-06-17 · Phase 6 done: login & app shell
+- `Login` (two-panel, role picker) routes by role: admin→`/admin`, coach→`/teacher`, student→`/student`.
+- `AdminShell`: sidebar (Logo, New class, grouped nav, settings, user + sign-out), topbar (route title,
+  search, bell), routed `<Outlet>`. Active nav + title derived from the URL via `NavLink`/`useLocation`.
+- `ToastProvider`/`useNotify` context replaces the prototype's imperative toast stack; sign-out → `/login`.
+- Nested admin routes wired (dashboard/classes/:id/calendar/materials/teachers/students/:id/settings)
+  with placeholder screens (real ones land in P7). `/admin` redirects to dashboard.
+- 7 new tests (role pick + routing, topbar title, redirect, sign-out) — 47 total.
+- Verified: 47 tests, `build`, `build-storybook` all green.
+
 ### 2026-06-17 · Phase 5 done: landing page
 - Ported `EduNex Landing.html` (10 sections) to React at `/`: Nav (sticky + mobile hamburger menu),
   Hero, D.C.I, English feature, Founder, Packages (4 tiers, Platinum "popular"), Blog, Testimonials,

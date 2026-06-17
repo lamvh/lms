@@ -14,13 +14,18 @@ describe('app routes', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('chinh phục giấc mơ');
   });
 
-  it('mounts the login stub at /login', () => {
+  it('mounts the login page at /login', () => {
     renderAt('/login');
-    expect(screen.getByTestId('login-stub')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Welcome back' })).toBeInTheDocument();
   });
 
-  it('mounts role apps under /admin, /student, /teacher', () => {
+  it('mounts the admin shell + dashboard at /admin/dashboard', () => {
     renderAt('/admin/dashboard');
-    expect(screen.getByTestId('admin-stub')).toBeInTheDocument();
+    expect(screen.getByTestId('admin-dashboard')).toBeInTheDocument();
+  });
+
+  it('mounts the student app under /student', () => {
+    renderAt('/student');
+    expect(screen.getByTestId('student-stub')).toBeInTheDocument();
   });
 });
