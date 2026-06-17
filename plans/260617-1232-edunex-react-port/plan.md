@@ -1,9 +1,9 @@
 ---
-title: "EduNex React Port (Landing + LMS)"
-description: "Port Claude Design EduNex prototype to React + Vite + Tailwind + TypeScript: landing page first, then full LMS app"
+title: "EduNex React Port (Components + Storybook → Landing → LMS)"
+description: "Port Claude Design EduNex prototype to React + Vite + Tailwind + TypeScript: component library + Storybook first (from the Components build contract), then landing page, then full LMS app"
 status: pending
 priority: P2
-effort: ~32h
+effort: ~36h
 branch: ""
 tags: [react, vite, tailwind, typescript, port, landing, lms]
 blockedBy: []
@@ -22,9 +22,14 @@ Recreate the Claude Design EduNex prototype as a real React app in empty target 
 Source prototype: `design/prototype/` (React 18 UMD + in-browser Babel, global-scope
 components, `window.VZ` data, inline-style + CSS-var tokens).
 
-Two deliverables: (1) `EduNex Landing.html` marketing page, (2) full EduNex LMS app
+Three deliverables, in this order: (1) a **component library + Storybook** built from the
+`EduNex Components.html` build contract, (2) `EduNex Landing.html` marketing page, (3) full EduNex LMS app
 (login + admin / student / teacher screens). Vietnamese content. EduNex = English + career coaching
 for Vietnamese people in New Zealand, founder Ms. Jane.
+
+**Build-contract source:** `design/prototype/EduNex Components.html` — enumerates every component
+across its states. Storybook is the living version of this contract; screens are assembled only
+after the system exists.
 
 **Brainstorm summary:** [260617-1232-edunex-port-brainstorm.md](../260617-1232-edunex-port-brainstorm.md)
 
@@ -36,7 +41,9 @@ for Vietnamese people in New Zealand, founder Ms. Jane.
 | CSS | **Full Tailwind rewrite** (tokens mirrored to `tailwind.config`; arbitrary values for hand-tuned numbers; delete source CSS files) |
 | Images | Keep `<image-slot>` (React-wrapped custom element; read-only outside design runtime) |
 | Routing | **React Router** replaces `useState('screen')` switcher |
-| Build order | **Landing first**, then LMS in phases |
+| Tokens | **Tailwind theme tokens** — all design tokens (gold/charcoal scales, radii, shadows, fonts) defined in `tailwind.config`; components use utility classes (`bg-a-500`, `rounded-md`, `shadow-pop`, `font-head`). No CSS-var layer except where `<image-slot>` needs it. |
+| Storybook | **Storybook 8** (Vite builder, Tailwind wired into preview, autodocs). One `*.stories.tsx` per component covering all states in the Components page. |
+| Build order | **Components + Storybook first**, then Landing, then LMS in phases |
 | Dropped | Design-tool chrome: tweaks-panel, device frames, Stage scaling, tooling bar |
 | Copy rule | No em dash in visible copy; use ` · ` / `:` / comma |
 | Mode | **TDD** (Vitest + React Testing Library; tests-first per phase) |
@@ -45,20 +52,22 @@ for Vietnamese people in New Zealand, founder Ms. Jane.
 
 | Phase | Name | Status | Effort |
 |-------|------|--------|--------|
-| 1 | [Scaffold & tooling](./phase-01-scaffold-tooling.md) | Pending | 2h |
-| 2 | [Landing page](./phase-02-landing-page.md) | Pending | 5h |
-| 3 | [Shared primitives & data](./phase-03-shared-primitives-data.md) | Pending | 3h |
-| 4 | [Login & app shell](./phase-04-login-app-shell.md) | Pending | 3h |
-| 5 | [Admin screens](./phase-05-admin-screens.md) | Pending | 8h |
-| 6 | [Student app](./phase-06-student-app.md) | Pending | 5h |
-| 7 | [Teacher app](./phase-07-teacher-app.md) | Pending | 3h |
-| 8 | [Polish & QA](./phase-08-polish-qa.md) | Pending | 3h |
+| 1 | [Scaffold, tooling & Storybook](./phase-01-scaffold-tooling.md) | Pending | 3h |
+| 2 | [Foundations & Icons](./phase-02-foundations-icons.md) | Pending | 2h |
+| 3 | [Shared primitives](./phase-03-shared-primitives.md) | Pending | 4h |
+| 4 | [Composites & sample data](./phase-04-composites-data.md) | Pending | 4h |
+| 5 | [Landing page](./phase-05-landing-page.md) | Pending | 5h |
+| 6 | [Login & app shell](./phase-06-login-app-shell.md) | Pending | 3h |
+| 7 | [Admin screens](./phase-07-admin-screens.md) | Pending | 8h |
+| 8 | [Student app](./phase-08-student-app.md) | Pending | 5h |
+| 9 | [Teacher app](./phase-09-teacher-app.md) | Pending | 3h |
+| 10 | [Polish & QA](./phase-10-polish-qa.md) | Pending | 3h |
 
 ## Dependency chain
 
-P1 → P2 (landing ships after scaffold; no app deps).
-P1 → P3 → P4 → {P5, P6, P7} → P8.
-P2 is independent of P3-P7 and can ship/deploy on its own after P1.
+P1 → P2 → P3 → P4 (component library + Storybook fully populated after P4, before any screen).
+P4 → P5 (landing reuses Logo + tokens) and P4 → P6 → {P7, P8, P9} → P10.
+Landing (P5) depends only on P1–P4 tokens/Logo and can ship/deploy on its own once P5 is done.
 
 ## Token sets (both go in tailwind.config)
 
@@ -71,10 +80,12 @@ P2 is independent of P3-P7 and can ship/deploy on its own after P1.
 
 | Source | Port target |
 |---|---|
+| `EduNex Components.html` | component inventory + states → one `*.stories.tsx` per component (P2–P4) |
 | `EduNex Landing.html` | `src/landing/*` |
 | `src/icons.jsx` | `src/components/Icon.tsx` |
-| `src/ui.jsx` | `src/components/*` (Avatar, Stat, Modal, Sheet, Segmented, Toggle, Tip, StatusBadge, FileIcon) |
+| `src/ui.jsx` | `src/components/*` (Avatar, Stat, Modal, Sheet, Segmented, Toggle, Tip, StatusBadge, FileIcon, Button, Chip, Tag, Field) |
 | `edunex/login.jsx` | `src/components/Logo.tsx`, `src/app/Login.tsx` |
+| `edunex/{dashboard,classes,student}.jsx` (composites) | `src/components/{StatCards,ClassCard,SessionCard,ZoomPanel}.tsx` |
 | `edunex/data.js` (`window.VZ`) | `src/data/edunex.ts` (typed) |
 | `edunex/shell.jsx` | `src/app/admin/AdminShell.tsx` |
 | `edunex/dashboard|classes|calendar|people.jsx`, `src/admin-materials.jsx` | `src/app/admin/*` |
@@ -109,3 +120,30 @@ Decisions confirmed (4 questions):
 Re-read all phase files + plan.md. Checked for stale terms (remote-image refs, "all roles to /admin", optional/Playwright smoke, unresolved open questions). All propagated; no contradictions remain. Em-dash refs that survive are intentional (rule/test references). 
 
 Recommendation: proceed to implementation. No unresolved contradictions.
+
+### Session 2 (2026-06-17) — Restructure: components + Storybook first
+
+Trigger: fetched `EduNex Components.html` build contract from the Claude Design handoff bundle
+(`design/prototype/`), plus `design-summary.md` and chat transcripts (`design/chats/`).
+
+Restructured the plan so the **component library + Storybook is built before any screen**, matching
+the build contract's intent ("implement the system before screens are assembled").
+
+Decisions confirmed (4 questions):
+1. **Styling** → full Tailwind rewrite (unchanged from Session 1).
+2. **Tokens** → defined as **Tailwind theme tokens** in `tailwind.config` (not a CSS-var layer);
+   components use utility classes. CSS vars retained only where `<image-slot>` needs them.
+3. **Storybook** → **Storybook 8** + Vite builder + Tailwind in preview + autodocs. One stories
+   file per component, a story per state from the Components page.
+4. **Phase order** → components/Storybook (P1–P4) → Landing (P5) → LMS (P6–P10).
+
+Phase changes:
+- P1 gains Storybook 8 setup.
+- Old P3 (shared primitives & data) split into: **P2 Foundations & Icons**, **P3 Shared primitives**,
+  **P4 Composites & sample data** — each adds `*.stories.tsx`.
+- Screens renumbered: Landing P2→P5, Login P4→P6, Admin P5→P7, Student P6→P8, Teacher P7→P9, Polish P8→P10.
+
+Component inventory (the finite contract from `EduNex Components.html`):
+- Foundations: color scales, typography, radii & shadows, 51-name Icon set.
+- Primitives: Button, StatusBadge, Chip, Tag, Field, Avatar, FileIcon, Segmented, Toggle, Stat, Tip, Modal, Sheet.
+- Composites: Logo, StatCards, ClassCard, SessionCard, ZoomPanel.

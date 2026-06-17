@@ -1,13 +1,13 @@
 ---
-phase: 6
+phase: 8
 title: "Student app"
 status: pending
 priority: P2
 effort: "5h"
-dependencies: [4]
+dependencies: [6]
 ---
 
-# Phase 6: Student app
+# Phase 8: Student app
 
 ## Overview
 Port the student mobile app (`edunex/student.jsx`, 653 lines) at `/student/*`. In the prototype it ran

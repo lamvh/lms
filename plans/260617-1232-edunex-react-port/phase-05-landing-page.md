@@ -1,13 +1,13 @@
 ---
-phase: 2
+phase: 5
 title: "Landing page"
 status: pending
 priority: P1
 effort: "5h"
-dependencies: [1]
+dependencies: [4]
 ---
 
-# Phase 2: Landing page
+# Phase 5: Landing page
 
 ## Overview
 Port `EduNex Landing.html` (10 sections) to typed React components at `/`. Primary deliverable;

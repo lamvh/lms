@@ -1,13 +1,13 @@
 ---
-phase: 4
+phase: 6
 title: "Login & app shell"
 status: pending
 priority: P1
 effort: "3h"
-dependencies: [3]
+dependencies: [4]
 ---
 
-# Phase 4: Login & app shell
+# Phase 6: Login & app shell
 
 ## Overview
 Port the login screen and the admin shell (sidebar + topbar + nested router), establishing role-based
@@ -20,7 +20,7 @@ routing that replaces the prototype's `useState('screen')` switcher.
 ## Architecture
 - `src/app/Login.tsx`: port `LoginScreen`; replace `onSignIn(role)` callback with `useNavigate()`. Keep brand panel (stats from `data.stats`), form panel, role buttons.
 - `src/app/admin/AdminShell.tsx`: port `shell.jsx`. Sidebar (Logo, "New class", grouped NAV, settings, user footer + sign-out), topbar (page title from route, search, bell), `<Outlet/>` main, toast stack.
-- Routing: `/admin` parent route → AdminShell with child routes `dashboard`, `classes`, `classes/:classId`, `calendar`, `materials`, `teachers`, `students`, `students/:studentId`, `settings`. Default index → `dashboard`. Screen components stubbed here, filled in P5.
+- Routing: `/admin` parent route → AdminShell with child routes `dashboard`, `classes`, `classes/:classId`, `calendar`, `materials`, `teachers`, `students`, `students/:studentId`, `settings`. Default index → `dashboard`. Screen components stubbed here, filled in P7 (admin)/P8 (student)/P9 (teacher).
 - Toast: shared `useToasts()` hook (port `notify` logic) provided via context to child screens.
 - Post-login routing: each role lands on its own home (admin→`/admin`, coach→`/teacher`, student→`/student`). <!-- Updated: Validation Session 1 - confirmed each-role-own-home -->
 

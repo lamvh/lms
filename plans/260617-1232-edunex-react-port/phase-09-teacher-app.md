@@ -1,13 +1,13 @@
 ---
-phase: 7
+phase: 9
 title: "Teacher app"
 status: pending
 priority: P3
 effort: "3h"
-dependencies: [4]
+dependencies: [6]
 ---
 
-# Phase 7: Teacher app
+# Phase 9: Teacher app
 
 ## Overview
 Port the teacher/coach desktop app (`edunex/teacher.jsx`, 288 lines) at `/teacher/*`. Per the source notes,

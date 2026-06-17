@@ -21,13 +21,18 @@ Tagline: **Learn More · Achieve More · Be Unstoppable**
 |---|---|
 | Framework | React 18 + Vite |
 | Language | TypeScript (strict) |
-| Styling | Tailwind CSS (design tokens mirrored into `tailwind.config`) |
+| Styling | Tailwind CSS (all design tokens as Tailwind theme tokens in `tailwind.config`) |
+| Components | Component library + **Storybook 8** built first, from the `EduNex Components.html` build contract |
 | Routing | React Router (`/`, `/login`, `/admin/*`, `/student/*`, `/teacher/*`) |
 | Images | `<image-slot>` custom element, wrapped as a React component |
 | Tests | Vitest + React Testing Library (behavior/render/routing; visual parity verified manually) |
 
+Build order: **components + Storybook first → landing page → LMS app.**
+
 Source prototype reference (the original "Claude Design"): `design/prototype/` — the
-HTML/CSS/JS + React-UMD prototype this app is ported from. See `design/prototype/PROTOTYPE-NOTES.md`.
+HTML/CSS/JS + React-UMD prototype this app is ported from. The component build contract is
+`design/prototype/EduNex Components.html`; design summary in `design/prototype/design-summary.md`;
+original design chats in `design/chats/`. See also `design/prototype/PROTOTYPE-NOTES.md`.
 The repo is the source of truth; the prototype is kept as the visual/design reference.
 Implementation plan: `plans/260617-1232-edunex-react-port/plan.md`.
 
@@ -136,13 +141,22 @@ Landing shadows: `sh-card`, `sh-soft` (warm low-opacity, see prototype `:root`).
 
 ## Build order
 
-P1 scaffold → **P2 landing page (ships first)** → P3 primitives + data → P4 login + shell →
-P5 admin screens → P6 student app → P7 teacher app → P8 polish + QA.
+P1 scaffold + Storybook → P2 foundations + icons → P3 shared primitives → **P4 composites + data
+(component library + Storybook fully populated here)** → P5 landing page → P6 login + shell →
+P7 admin screens → P8 student app → P9 teacher app → P10 polish + QA.
 See the plan for phase detail and status.
 
 ## Changelog
 
 > Add an entry per feature / change. Format: `### YYYY-MM-DD · summary` then bullets.
+
+### 2026-06-17 · Plan restructured: components + Storybook first
+- Fetched the `EduNex Components.html` build contract from the Claude Design handoff bundle
+  (saved to `design/prototype/`), plus `design-summary.md` and chat transcripts (`design/chats/`).
+- Reordered the plan so the component library + Storybook is built before any screen:
+  P1 scaffold+Storybook → P2 foundations+icons → P3 primitives → P4 composites+data → then
+  landing (P5) → LMS (P6–P10). Old P3 (primitives+data) split into P2/P3/P4; screens renumbered.
+- Tokens now defined as Tailwind theme tokens (not a CSS-var layer); Storybook 8 + Vite + autodocs.
 
 ### 2026-06-17 · Project planned
 - Fetched Claude Design handoff bundle (`EduNex Landing.html` + LMS prototype).

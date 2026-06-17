@@ -1,13 +1,13 @@
 ---
-phase: 8
+phase: 10
 title: "Polish & QA"
 status: pending
 priority: P2
 effort: "3h"
-dependencies: [2, 5, 6, 7]
+dependencies: [5, 7, 8, 9]
 ---
 
-# Phase 8: Polish & QA
+# Phase 10: Polish & QA
 
 ## Overview
 Cross-wire the app, verify visual fidelity against the prototype, run responsive + accessibility passes,

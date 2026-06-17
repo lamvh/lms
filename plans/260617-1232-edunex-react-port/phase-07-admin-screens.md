@@ -1,13 +1,13 @@
 ---
-phase: 5
+phase: 7
 title: "Admin screens"
 status: pending
 priority: P2
 effort: "8h"
-dependencies: [4]
+dependencies: [6]
 ---
 
-# Phase 5: Admin screens
+# Phase 7: Admin screens
 
 ## Overview
 Port all admin desktop screens that mount inside `AdminShell`: dashboard, classes list, class detail,
@@ -30,7 +30,7 @@ timetable, materials, teachers, students, student detail, settings. Largest phas
 
 ## Related Code Files
 - Create: `src/app/admin/{Dashboard,ClassList,ClassDetail,CalendarView,MaterialsLibrary,PeopleView,StudentDetail,Settings}.tsx`
-- Modify: `src/routes.tsx` (replace P4 stubs with real screens)
+- Modify: `src/routes.tsx` (replace P6 stubs with real screens)
 - Source ref: `design/prototype/{edunex/dashboard.jsx,edunex/classes.jsx,edunex/calendar.jsx,edunex/people.jsx,src/admin-materials.jsx}`
 
 ## Implementation Steps
@@ -58,4 +58,4 @@ timetable, materials, teachers, students, student detail, settings. Largest phas
 ## Risk Assessment
 - Dashboard variant system: only the default variant is in scope; document the drop so it is not mistaken for missing work.
 - Largest surface: split into sub-commits per screen; verify each against prototype before next.
-- Some screens may import primitives not yet covered: confirm P3 coverage before starting; add any missing primitive there, not ad hoc.
+- Some screens may import primitives not yet covered: confirm P3/P4 coverage before starting; add any missing primitive/composite there, not ad hoc.
