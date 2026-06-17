@@ -150,6 +150,13 @@ See the plan for phase detail and status.
 
 > Add an entry per feature / change. Format: `### YYYY-MM-DD · summary` then bullets.
 
+### 2026-06-17 · Phase 2 done: foundations & icons
+- `Icon` component ported (57 stroke glyphs, typed `IconName`, `size`/`stroke`, `file` fallback for
+  unknown names); `ICON_NAMES` export. 4 tests passing.
+- Storybook: `Foundations/Icon` (full glyph grid + single controllable icon) and
+  `Foundations/Overview` (color scales, typography, radii, shadows) — section 01 of the build contract.
+- Verified: 9 tests green, `build` + `build-storybook` pass.
+
 ### 2026-06-17 · Phase 1 done: scaffold + tooling + Storybook
 - Vite + React 18 + TypeScript (strict) scaffolded; React Router skeleton with 5 stub routes.
 - All design tokens defined as Tailwind theme tokens in `tailwind.config.ts` (charcoal `p-*`, gold `a-*`,

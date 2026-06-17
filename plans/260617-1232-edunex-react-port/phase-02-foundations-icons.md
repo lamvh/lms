@@ -1,7 +1,7 @@
 ---
 phase: 2
 title: "Foundations & Icons"
-status: pending
+status: done
 priority: P1
 effort: "2h"
 dependencies: [1]
@@ -47,9 +47,9 @@ section 01 ("Foundations") of `EduNex Components.html`.
   glyph for an unknown name; applies `size` to width/height.
 
 ## Success Criteria
-- [ ] `Icon` renders all 51 names without error; Storybook icon grid matches the Components page.
-- [ ] Foundation stories show the exact token hex values from the Components page.
-- [ ] Tests green.
+- [x] `Icon` renders all glyphs (57, ≥ the 51 in the contract) without error; Storybook grid matches the Components page.
+- [x] Foundation stories show the exact token hex values from the Components page.
+- [x] Tests green (9 total); `build` + `build-storybook` pass.
 
 ## Risk Assessment
 - Icon `name` union vs runtime fallback: keep a permissive `string` accept with union autocomplete to avoid
