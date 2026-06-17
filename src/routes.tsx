@@ -7,17 +7,14 @@ import {
 import { LandingPage } from './landing/LandingPage';
 import { Login } from './app/Login';
 import { AdminShell } from './app/admin/AdminShell';
-import {
-  DashboardStub,
-  ClassesStub,
-  ClassDetailStub,
-  CalendarStub,
-  MaterialsStub,
-  TeachersStub,
-  StudentsStub,
-  StudentDetailStub,
-  SettingsStub,
-} from './app/admin/admin-screen-stubs';
+import { Dashboard } from './app/admin/Dashboard';
+import { Classes } from './app/admin/Classes';
+import { ClassDetail } from './app/admin/ClassDetail';
+import { Calendar } from './app/admin/Calendar';
+import { Materials } from './app/admin/Materials';
+import { People } from './app/admin/People';
+import { StudentDetail } from './app/admin/StudentDetail';
+import { Settings } from './app/admin/Settings';
 
 /* Role-app stubs — student P8, teacher P9. */
 const StudentStub = () => <div data-testid="student-stub">Student app</div>;
@@ -32,15 +29,15 @@ export const routes: RouteObject[] = [
     element: <AdminShell />,
     children: [
       { index: true, element: <Navigate to="dashboard" replace /> },
-      { path: 'dashboard', element: <DashboardStub /> },
-      { path: 'classes', element: <ClassesStub /> },
-      { path: 'classes/:classId', element: <ClassDetailStub /> },
-      { path: 'calendar', element: <CalendarStub /> },
-      { path: 'materials', element: <MaterialsStub /> },
-      { path: 'teachers', element: <TeachersStub /> },
-      { path: 'students', element: <StudentsStub /> },
-      { path: 'students/:studentId', element: <StudentDetailStub /> },
-      { path: 'settings', element: <SettingsStub /> },
+      { path: 'dashboard', element: <Dashboard /> },
+      { path: 'classes', element: <Classes /> },
+      { path: 'classes/:classId', element: <ClassDetail /> },
+      { path: 'calendar', element: <Calendar /> },
+      { path: 'materials', element: <Materials /> },
+      { path: 'teachers', element: <People kind="teachers" /> },
+      { path: 'students', element: <People kind="students" /> },
+      { path: 'students/:studentId', element: <StudentDetail /> },
+      { path: 'settings', element: <Settings /> },
     ],
   },
   { path: '/student/*', element: <StudentStub /> },

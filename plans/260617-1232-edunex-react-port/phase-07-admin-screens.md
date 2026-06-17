@@ -1,7 +1,7 @@
 ---
 phase: 7
 title: "Admin screens"
-status: pending
+status: done
 priority: P2
 effort: "8h"
 dependencies: [6]
@@ -51,9 +51,9 @@ timetable, materials, teachers, students, student detail, settings. Largest phas
 - `Dashboard.test.tsx`: renders `stats.teachers`/sessions values from data.
 
 ## Success Criteria
-- [ ] All 9 admin routes render real, data-driven screens matching prototype.
-- [ ] Cross-screen navigation (open class/student, back) works via router.
-- [ ] Tests green; no console errors.
+- [x] All 9 admin routes render real, data-driven screens matching prototype.
+- [x] Cross-screen navigation (open class/student, back) works via router.
+- [x] Tests green; no console errors.
 
 ## Risk Assessment
 - Dashboard variant system: only the default variant is in scope; document the drop so it is not mistaken for missing work.

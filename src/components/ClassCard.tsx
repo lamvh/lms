@@ -1,14 +1,14 @@
 import { Avatar } from './Avatar';
 import { StatusBadge } from './StatusBadge';
 import { Button } from './Button';
-import { Icon } from './Icon';
+import { Icon, type IconName } from './Icon';
 import { teacherById, DAYS } from '../data/edunex';
 import type { ClassItem } from '../types/edunex';
 
 export interface ClassCardProps {
   c: ClassItem;
   openClass: (id: string) => void;
-  notify: (msg: string, icon?: string) => void;
+  notify: (msg: string, icon?: IconName) => void;
 }
 
 /** Program summary card: status badge, coach, schedule, room and quick actions. */

@@ -21,7 +21,7 @@ describe('app routes', () => {
 
   it('mounts the admin shell + dashboard at /admin/dashboard', () => {
     renderAt('/admin/dashboard');
-    expect(screen.getByTestId('admin-dashboard')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Good afternoon');
   });
 
   it('mounts the student app under /student', () => {

@@ -150,6 +150,18 @@ See the plan for phase detail and status.
 
 > Add an entry per feature / change. Format: `### YYYY-MM-DD · summary` then bullets.
 
+### 2026-06-17 · Phase 7 done: admin screens
+- Built 8 admin screens wired to real data: Dashboard (Balanced layout: greeting, StatCards,
+  today schedule, quick actions, starting soon, programs table), Classes (ClassCard grid + filter
+  chips + search), ClassDetail (header + ZoomPanel + roster/materials tabs), Calendar (weekly grid),
+  Materials (searchable library), People (teachers/students via `kind`), StudentDetail (focus student
+  programs/homework/results/payments), Settings (template toggles).
+- Replaced admin route stubs with real screens; `:classId`/`:studentId` read via `useParams`.
+- Widened ClassCard/ZoomPanel `notify` prop to `IconName` to match the toast context type.
+- 5 new admin-screen tests — 52 total passing.
+- Verified: 52 tests, `build`, `build-storybook` all green.
+- Dropped (per plan): the 3-variant dashboard switcher (design-tool only) — Balanced ported.
+
 ### 2026-06-17 · Phase 6 done: login & app shell
 - `Login` (two-panel, role picker) routes by role: admin→`/admin`, coach→`/teacher`, student→`/student`.
 - `AdminShell`: sidebar (Logo, New class, grouped nav, settings, user + sign-out), topbar (route title,

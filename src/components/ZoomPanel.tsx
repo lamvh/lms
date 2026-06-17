@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Icon } from './Icon';
+import { Icon, type IconName } from './Icon';
 import { Button } from './Button';
 import { Field } from './Field';
 import { Modal } from './Modal';
@@ -7,7 +7,7 @@ import type { ClassItem } from '../types/edunex';
 
 export interface ZoomPanelProps {
   c: ClassItem;
-  notify: (msg: string, icon?: string) => void;
+  notify: (msg: string, icon?: IconName) => void;
 }
 
 /** Per-class Zoom management: editable meeting URL + passcode with copy-to-clipboard. */

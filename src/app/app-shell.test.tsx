@@ -35,8 +35,9 @@ describe('Login', () => {
 describe('AdminShell', () => {
   it('shows the topbar title for the active route', () => {
     renderAt('/admin/classes');
+    // Topbar h2 title + the Classes screen h1 both read "Classes".
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Classes');
-    expect(screen.getByTestId('admin-classes')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Classes');
   });
 
   it('redirects /admin to the dashboard', () => {
