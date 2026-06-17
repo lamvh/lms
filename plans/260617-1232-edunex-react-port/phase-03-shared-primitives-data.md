@@ -27,7 +27,7 @@ all LMS screens. No screen logic yet, only the shared layer.
 ## Related Code Files
 - Create: `src/data/edunex.ts`, `src/types/edunex.ts`, `src/lib/color.ts`
 - Create: `src/components/{Icon,Logo,Avatar,StatusBadge,FileIcon,Segmented,Toggle,Stat,Modal,Sheet,Tip}.tsx`
-- Source ref: `/tmp/edunex_design/edunex-lms/project/{src/icons.jsx,src/ui.jsx,edunex/login.jsx,edunex/data.js}`
+- Source ref: `design/prototype/{src/icons.jsx,src/ui.jsx,edunex/login.jsx,edunex/data.js}`
 
 ## Implementation Steps
 1. Define `src/types/edunex.ts` interfaces from `data.js` shapes (note `year` repurposed as learning focus; `zoom`, `roster`, `classes` added post-init).

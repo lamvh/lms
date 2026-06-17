@@ -26,7 +26,9 @@ Tagline: **Learn More · Achieve More · Be Unstoppable**
 | Images | `<image-slot>` custom element, wrapped as a React component |
 | Tests | Vitest + React Testing Library (behavior/render/routing; visual parity verified manually) |
 
-Source prototype reference: `/tmp/edunex_design/edunex-lms/project/`.
+Source prototype reference (the original "Claude Design"): `design/prototype/` — the
+HTML/CSS/JS + React-UMD prototype this app is ported from. See `design/prototype/PROTOTYPE-NOTES.md`.
+The repo is the source of truth; the prototype is kept as the visual/design reference.
 Implementation plan: `plans/260617-1232-edunex-react-port/plan.md`.
 
 ## Project structure (target)

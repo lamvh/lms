@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EduNex · Learn More · Achieve More · Be Unstoppable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#FBF6EA; --cream-2:#F6EEDC; --paper:#FFFFFF;
+    --ink:#22252E; --ink-2:#3C414C; --muted:#6E7280;
+    --gold:#F2B400; --gold-600:#D29900; --gold-700:#A9760B; --gold-soft:#FFF1CD; --gold-tint:#FCF6E6;
+    --line:#ECE1CC; --line-soft:#F4ECDC; --green:#2E9E6B;
+    --head:'Bricolage Grotesque','Plus Jakarta Sans',system-ui,sans-serif;
+    --body:'Plus Jakarta Sans',system-ui,sans-serif;
+    --sh-card:0 1px 2px rgba(60,45,15,.05), 0 14px 34px rgba(60,45,15,.07);
+    --sh-soft:0 1px 2px rgba(60,45,15,.04), 0 6px 18px rgba(60,45,15,.05);
+    --wrap:1200px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; font-family:var(--body); color:var(--ink-2); background:var(--cream);
+    -webkit-font-smoothing:antialiased; line-height:1.6; }
+  h1,h2,h3,h4{ font-family:var(--head); color:var(--ink); margin:0; line-height:1.12; letter-spacing:-0.02em; }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:var(--wrap); margin:0 auto; padding:0 28px; }
+  section{ position:relative; }
+
+  /* ---- buttons ---- */
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:9px; font-family:var(--head);
+    font-weight:600; font-size:15px; padding:13px 22px; border-radius:14px; border:1px solid transparent;
+    cursor:pointer; transition:transform .12s, box-shadow .15s, background .15s; white-space:nowrap; }
+  .btn:active{ transform:translateY(1px); }
+  .btn-gold{ background:var(--gold); color:#23252E; box-shadow:0 4px 16px rgba(242,180,0,.34); }
+  .btn-gold:hover{ background:#FFC22B; box-shadow:0 6px 22px rgba(242,180,0,.42); }
+  .btn-ghost{ background:var(--paper); color:var(--ink); border-color:var(--line); box-shadow:var(--sh-soft); }
+  .btn-ghost:hover{ border-color:var(--gold-600); color:var(--gold-700); }
+  .btn-dark{ background:var(--ink); color:#fff; }
+  .btn-dark:hover{ background:#2E323C; }
+  .btn-lg{ padding:16px 28px; font-size:16px; }
+
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-family:var(--head); font-weight:700;
+    font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-700);
+    background:var(--gold-tint); border:1px solid var(--gold-soft); padding:7px 14px; border-radius:999px; }
+  .kicker{ font-family:var(--head); font-weight:700; font-size:13px; letter-spacing:.10em; text-transform:uppercase; color:var(--gold-700); }
+
+  /* ---- logo ---- */
+  .logo{ display:inline-flex; align-items:center; gap:11px; }
+  .logo .mark{ width:40px; height:40px; border-radius:12px; flex-shrink:0;
+    background:linear-gradient(145deg,#FFC93D,#D29900); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 3px 10px rgba(224,162,0,.34); }
+  .logo .word{ font-family:var(--head); font-weight:800; font-size:23px; letter-spacing:-0.02em; color:var(--ink); line-height:1; }
+  .logo .word b{ color:var(--gold-700); font-weight:800; }
+
+  /* ---- header ---- */
+  header.nav{ position:sticky; top:0; z-index:50; background:rgba(251,246,234,.82);
+    backdrop-filter:blur(12px); border-bottom:1px solid var(--line-soft); }
+  .nav-in{ display:flex; align-items:center; gap:20px; height:74px; }
+  .nav-links{ display:flex; align-items:center; gap:4px; margin-left:14px; }
+  .nav-links a{ font-family:var(--head); font-weight:600; font-size:14.5px; color:var(--ink-2);
+    padding:9px 13px; border-radius:9px; transition:background .15s,color .15s; }
+  .nav-links a:hover{ background:var(--gold-tint); color:var(--gold-700); }
+  .nav-actions{ margin-left:auto; display:flex; align-items:center; gap:10px; }
+  .nav-actions .signin{ font-family:var(--head); font-weight:600; font-size:14.5px; color:var(--ink);
+    padding:10px 12px; border-radius:10px; }
+  .nav-actions .signin:hover{ color:var(--gold-700); }
+  .hamb{ display:none; margin-left:auto; width:44px; height:44px; border:1px solid var(--line); border-radius:11px;
+    background:var(--paper); align-items:center; justify-content:center; cursor:pointer; }
+  .hamb svg{ stroke:var(--ink); }
+  .mobile-menu{ display:none; flex-direction:column; gap:4px; padding:12px 28px 22px; border-bottom:1px solid var(--line-soft); background:var(--cream); }
+  .mobile-menu a{ font-family:var(--head); font-weight:600; font-size:16px; color:var(--ink); padding:12px 6px; border-bottom:1px solid var(--line-soft); }
+  .mobile-menu .row{ display:flex; gap:10px; margin-top:14px; }
+
+  /* ---- hero ---- */
+  .hero{ padding:64px 0 72px; overflow:hidden; }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:54px; align-items:center; }
+  .hero h1{ font-size:54px; font-weight:700; margin-top:22px; }
+  .hero h1 .hl{ color:var(--gold-700); position:relative; white-space:nowrap; }
+  .hero p.lead{ font-size:18px; color:var(--ink-2); margin-top:22px; max-width:520px; }
+  .hero .cta{ display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; }
+  .hero .trust{ display:flex; gap:26px; margin-top:34px; flex-wrap:wrap; }
+  .hero .trust .t{ display:flex; align-items:center; gap:10px; font-size:14px; color:var(--ink-2); font-weight:500; }
+  .hero .trust .t .ic{ width:34px; height:34px; border-radius:10px; background:var(--gold-tint); color:var(--gold-700);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+
+  .hero-media{ position:relative; }
+  .hero-media .photo{ width:100%; height:auto; aspect-ratio:4/5.3; border-radius:30px; box-shadow:var(--sh-card);
+    border:1px solid var(--line); background:var(--cream-2); }
+  .hero-media .glow{ position:absolute; inset:-40px -30px auto auto; width:300px; height:300px; border-radius:50%;
+    background:radial-gradient(circle, rgba(242,180,0,.35), transparent 70%); z-index:-1; }
+  .hero-media .badge{ position:absolute; left:-22px; bottom:34px; background:var(--paper); border:1px solid var(--line);
+    border-radius:18px; padding:14px 18px; box-shadow:var(--sh-card); display:flex; align-items:center; gap:12px; }
+  .hero-media .badge .av{ width:42px; height:42px; border-radius:50%; background:linear-gradient(145deg,#FFC93D,#D29900);
+    display:flex; align-items:center; justify-content:center; font-family:var(--head); font-weight:800; color:#23252E; }
+  .hero-media .badge .nm{ font-family:var(--head); font-weight:700; font-size:14.5px; color:var(--ink); }
+  .hero-media .badge .rl{ font-size:12.5px; color:var(--muted); }
+
+  /* ---- D.C.I ---- */
+  .band{ background:var(--paper); border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft); }
+  .sec-pad{ padding:80px 0; }
+  .sec-head{ text-align:center; max-width:640px; margin:0 auto 46px; }
+  .sec-head h2{ font-size:38px; font-weight:700; margin-top:14px; }
+  .sec-head p{ font-size:16.5px; color:var(--muted); margin-top:14px; }
+  .dci{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .dci .card{ background:var(--cream); border:1px solid var(--line); border-radius:22px; padding:30px 26px; box-shadow:var(--sh-soft); }
+  .dci .card .ic{ width:54px; height:54px; border-radius:16px; background:var(--gold-tint); color:var(--gold-700);
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+  .dci .card .lt{ font-family:var(--head); font-weight:800; font-size:13px; letter-spacing:.04em; color:var(--gold-700); }
+  .dci .card h3{ font-size:20px; font-weight:700; margin-top:6px; }
+  .dci .card p{ font-size:14.5px; color:var(--ink-2); margin-top:12px; }
+
+  /* ---- English feature ---- */
+  .feature{ display:grid; grid-template-columns:1fr 1.05fr; gap:54px; align-items:center; }
+  .feature .media{ position:relative; }
+  .feature .media .photo{ width:100%; height:auto; aspect-ratio:5/4.2; border-radius:26px; border:1px solid var(--line); box-shadow:var(--sh-card); background:var(--cream-2); }
+  .feature .media .chip{ position:absolute; right:-18px; top:28px; background:var(--paper); border:1px solid var(--line);
+    border-radius:16px; padding:12px 16px; box-shadow:var(--sh-card); display:flex; align-items:center; gap:10px; font-weight:600; font-size:13.5px; color:var(--ink); }
+  .feature h2{ font-size:38px; font-weight:700; margin-top:14px; }
+  .feature p.lead{ font-size:16.5px; color:var(--ink-2); margin-top:18px; }
+  .feature .list{ display:grid; grid-template-columns:1fr 1fr; gap:14px 22px; margin-top:26px; }
+  .feature .list .it{ display:flex; gap:12px; align-items:flex-start; }
+  .feature .list .it .tick{ width:26px; height:26px; border-radius:8px; background:var(--gold-tint); color:var(--gold-700);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .feature .list .it b{ display:block; font-family:var(--head); font-weight:700; font-size:14.5px; color:var(--ink); }
+  .feature .list .it span{ font-size:13px; color:var(--muted); }
+  .feature .cta{ margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; }
+
+  /* ---- founder ---- */
+  .founder{ display:grid; grid-template-columns:.85fr 1.15fr; gap:54px; align-items:center; }
+  .founder .media{ position:relative; }
+  .founder .media .photo{ width:100%; height:auto; aspect-ratio:4/5.2; border-radius:28px; border:1px solid var(--line); box-shadow:var(--sh-card); background:var(--cream); }
+  .founder .quote{ font-family:var(--head); font-size:30px; font-weight:600; color:var(--ink); line-height:1.28; letter-spacing:-0.02em; margin-top:16px; }
+  .founder p{ font-size:16px; color:var(--ink-2); margin-top:20px; }
+  .founder .sig{ margin-top:24px; display:flex; align-items:center; gap:13px; }
+  .founder .sig .nm{ font-family:var(--head); font-weight:700; font-size:16px; color:var(--ink); }
+  .founder .sig .rl{ font-size:13.5px; color:var(--muted); }
+
+  /* ---- packages ---- */
+  .pkgs{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; align-items:stretch; }
+  .pkg{ background:var(--paper); border:1px solid var(--line); border-radius:22px; padding:26px 22px; display:flex; flex-direction:column; box-shadow:var(--sh-soft); position:relative; }
+  .pkg.pop{ border-color:var(--gold); box-shadow:0 2px 6px rgba(242,180,0,.12), 0 18px 40px rgba(60,45,15,.10); }
+  .pkg .tier{ font-family:var(--head); font-weight:800; font-size:12px; letter-spacing:.10em; text-transform:uppercase; color:var(--gold-700); }
+  .pkg.pop .pop-tag{ position:absolute; top:-12px; left:22px; background:var(--gold); color:#23252E; font-family:var(--head);
+    font-weight:700; font-size:11.5px; padding:5px 12px; border-radius:999px; box-shadow:0 4px 12px rgba(242,180,0,.4); }
+  .pkg h3{ font-size:18.5px; font-weight:700; margin-top:8px; min-height:50px; }
+  .pkg .price{ font-family:var(--head); font-weight:800; font-size:30px; color:var(--ink); margin-top:12px; }
+  .pkg .price span{ font-size:14px; font-weight:600; color:var(--muted); }
+  .pkg .desc{ font-size:13.5px; color:var(--ink-2); margin-top:12px; flex:1; }
+  .pkg .btn{ margin-top:20px; width:100%; }
+
+  /* ---- blog ---- */
+  .blog{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .post{ background:var(--paper); border:1px solid var(--line); border-radius:20px; overflow:hidden; box-shadow:var(--sh-soft); transition:transform .15s, box-shadow .15s; display:flex; flex-direction:column; }
+  .post:hover{ transform:translateY(-3px); box-shadow:var(--sh-card); }
+  .post .ph{ height:158px; background:linear-gradient(135deg,var(--gold-soft),var(--cream-2)); position:relative; }
+  .post .ph .dt{ position:absolute; left:14px; bottom:14px; background:var(--paper); border:1px solid var(--line);
+    border-radius:999px; padding:4px 11px; font-size:12px; font-weight:600; color:var(--ink-2); }
+  .post .bd{ padding:18px 18px 20px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .post .bd h3{ font-size:17px; font-weight:700; line-height:1.3; }
+  .post .bd .rm{ margin-top:auto; font-family:var(--head); font-weight:700; font-size:13.5px; color:var(--gold-700); display:inline-flex; align-items:center; gap:6px; }
+
+  /* ---- testimonials ---- */
+  .tms{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .tm{ background:var(--cream); border:1px solid var(--line); border-radius:20px; padding:26px 24px; box-shadow:var(--sh-soft); }
+  .tm .stars{ display:flex; gap:3px; color:var(--gold); margin-bottom:14px; }
+  .tm p{ font-size:15px; color:var(--ink-2); }
+  .tm .who{ display:flex; align-items:center; gap:12px; margin-top:18px; }
+  .tm .who .av{ width:42px; height:42px; border-radius:50%; background:var(--gold-tint); color:var(--gold-700);
+    display:flex; align-items:center; justify-content:center; font-family:var(--head); font-weight:800; font-size:15px; }
+  .tm .who .nm{ font-family:var(--head); font-weight:700; font-size:14.5px; color:var(--ink); }
+  .tm .who .rl{ font-size:12.5px; color:var(--muted); }
+
+  /* ---- CTA band ---- */
+  .cta-band{ background:linear-gradient(150deg,#23262F,#15171C); color:#fff; border-radius:30px; padding:58px 54px;
+    display:flex; align-items:center; gap:40px; position:relative; overflow:hidden; }
+  .cta-band .glow{ position:absolute; top:-80px; right:-40px; width:320px; height:320px; border-radius:50%;
+    background:radial-gradient(circle, rgba(242,180,0,.34), transparent 70%); }
+  .cta-band h2{ color:#fff; font-size:36px; font-weight:700; position:relative; }
+  .cta-band p{ color:rgba(255,255,255,.72); font-size:16px; margin-top:12px; max-width:520px; position:relative; }
+  .cta-band .act{ margin-left:auto; display:flex; flex-direction:column; gap:12px; position:relative; flex-shrink:0; }
+
+  /* ---- footer ---- */
+  footer{ background:var(--paper); border-top:1px solid var(--line-soft); padding:56px 0 30px; margin-top:0; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:34px; }
+  .foot-grid p.ab{ font-size:14px; color:var(--muted); margin-top:16px; max-width:280px; }
+  .foot-col h4{ font-family:var(--head); font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); margin-bottom:14px; }
+  .foot-col a{ display:block; font-size:14.5px; color:var(--ink-2); padding:6px 0; }
+  .foot-col a:hover{ color:var(--gold-700); }
+  .foot-bottom{ border-top:1px solid var(--line-soft); margin-top:40px; padding-top:22px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .foot-bottom .cp{ font-size:13.5px; color:var(--muted); }
+  .foot-bottom .soc{ margin-left:auto; display:flex; gap:10px; }
+  .foot-bottom .soc a{ width:38px; height:38px; border-radius:11px; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink-2); }
+  .foot-bottom .soc a:hover{ border-color:var(--gold-600); color:var(--gold-700); }
+
+  image-slot{ border-radius:26px; }
+
+  /* ---- responsive ---- */
+  @media (max-width:980px){
+    .nav-links{ display:none; } .nav-actions{ display:none; } .hamb{ display:flex; }
+    .hero-grid{ grid-template-columns:1fr; gap:40px; } .hero h1{ font-size:42px; }
+    .hero-media{ max-width:440px; }
+    .dci{ grid-template-columns:1fr; } .feature{ grid-template-columns:1fr; gap:36px; }
+    .feature .media{ order:-1; } .founder{ grid-template-columns:1fr; gap:34px; }
+    .pkgs{ grid-template-columns:1fr 1fr; } .blog{ grid-template-columns:1fr; } .tms{ grid-template-columns:1fr; }
+    .cta-band{ flex-direction:column; align-items:flex-start; padding:40px 30px; } .cta-band .act{ margin-left:0; width:100%; }
+    .foot-grid{ grid-template-columns:1fr 1fr; gap:28px; }
+  }
+  @media (max-width:560px){
+    html,body{ overflow-x:hidden; }
+    .wrap{ padding:0 20px; }
+    .nav-in{ height:64px; }
+    .logo .word{ font-size:21px; } .logo .mark{ width:38px; height:38px; }
+
+    .sec-pad{ padding:52px 0; }
+    .sec-head{ margin-bottom:30px; } .sec-head h2{ font-size:27px; } .sec-head p{ font-size:15px; margin-top:10px; }
+
+    .hero{ padding:32px 0 44px; }
+    .hero-grid{ gap:30px; }
+    .hero h1{ font-size:33px; margin-top:16px; }
+    .hero p.lead{ font-size:16px; margin-top:16px; }
+    .hero .cta{ flex-direction:column; gap:11px; margin-top:24px; }
+    .hero .cta .btn{ width:100%; }
+    .hero .trust{ gap:13px 20px; margin-top:24px; }
+    .hero .trust .t{ font-size:13px; }
+    .hero-media{ width:100%; max-width:330px; margin:0 auto; }
+    .hero-media .glow{ width:220px; height:220px; }
+    .hero-media .badge{ left:10px; bottom:14px; padding:11px 14px; }
+    .hero-media .badge .av{ width:36px; height:36px; }
+
+    .feature .list{ grid-template-columns:1fr; gap:12px; }
+    .feature .media .chip{ right:10px; top:14px; }
+    .feature h2{ font-size:27px; } .feature p.lead{ font-size:15.5px; }
+    .feature .cta{ flex-direction:column; } .feature .cta .btn{ width:100%; }
+
+    .founder .media{ width:100%; max-width:340px; margin:0 auto; }
+    .founder .quote{ font-size:23px; } .founder p{ font-size:15px; }
+
+    .pkgs{ grid-template-columns:1fr; gap:16px; }
+    .pkg{ padding:22px 20px; } .pkg h3{ min-height:0; font-size:18px; }
+
+    .blog{ gap:16px; } .tms{ gap:16px; }
+
+    .cta-band{ padding:32px 22px; border-radius:24px; } .cta-band h2{ font-size:25px; } .cta-band p{ font-size:15px; }
+
+    .foot-grid{ grid-template-columns:1fr 1fr; gap:22px 18px; }
+    .foot-bottom{ flex-direction:column; align-items:flex-start; }
+    .foot-bottom .soc{ margin-left:0; }
+  }
+  @media (max-width:400px){
+    .hero h1{ font-size:29px; }
+    .sec-head h2{ font-size:24px; }
+    .foot-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="EduNex">
+      <span class="mark">
+        <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#23252E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 4 21.5 8 12 12 2.5 8z" /><path d="M6.5 10v3.2c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8V10" /><path d="M21.5 8v4.2" />
+        </svg>
+      </span>
+      <span class="word">Edu<b>Nex</b></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#triet-ly">Giới thiệu</a>
+      <a href="#tieng-anh">Tiếng Anh</a>
+      <a href="#khoa-hoc">CV · Phỏng vấn</a>
+      <a href="#blog">Blog</a>
+      <a href="#lien-he">Liên hệ</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="signin" href="EduNex LMS.html">Đăng nhập</a>
+      <a class="btn btn-gold" href="#lien-he">Tư vấn miễn phí</a>
+    </div>
+    <button class="hamb" id="hamb" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mmenu">
+    <a href="#triet-ly">Giới thiệu</a>
+    <a href="#tieng-anh">Tiếng Anh</a>
+    <a href="#khoa-hoc">CV · Phỏng vấn</a>
+    <a href="#blog">Blog</a>
+    <a href="#lien-he">Liên hệ</a>
+    <div class="row">
+      <a class="btn btn-ghost" href="EduNex LMS.html" style="flex:1">Đăng nhập</a>
+      <a class="btn btn-gold" href="#lien-he" style="flex:1">Tư vấn miễn phí</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Learn More · Achieve More · Be Unstoppable</span>
+      <h1>Đồng hành cùng bạn trên hành trình <span class="hl">chinh phục giấc mơ</span></h1>
+      <p class="lead">EduNex giúp các bạn trẻ và những người phụ nữ không an phận tự tin sử dụng Tiếng Anh để phá bỏ giới hạn, khám phá bản thân và hiện thực hoá ước mơ tại New Zealand.</p>
+      <div class="cta">
+        <a class="btn btn-gold btn-lg" href="#lien-he">Tư vấn miễn phí</a>
+        <a class="btn btn-ghost btn-lg" href="#tieng-anh">Khám phá khoá Tiếng Anh</a>
+      </div>
+      <div class="trust">
+        <div class="t"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 21.5 8 12 12 2.5 8z"/><path d="M6.5 10v3.2c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8V10"/></svg></span>Lộ trình cá nhân hoá</div>
+        <div class="t"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM5 20a7 7 0 0 1 14 0"/></svg></span>Coaching 1:1 cùng Ms. Jane</div>
+        <div class="t"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span>New Zealand</div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="glow"></div>
+      <image-slot id="hero-jane" class="photo" shape="rounded" radius="30" src="https://edunex.co.nz/wp-content/uploads/2025/03/Ms-Jane.png" placeholder="Thả ảnh Ms. Jane / lớp học"></image-slot>
+      <div class="badge">
+        <span class="av">J</span>
+        <div>
+          <div class="nm">Ms. Jane</div>
+          <div class="rl">Nhà sáng lập &amp; Coach</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ D.C.I ============ -->
+<section class="band sec-pad" id="triet-ly">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Triết lý D.C.I</span>
+      <h2>Ba giá trị dẫn lối mọi hành trình tại EduNex</h2>
+      <p>Chúng tôi tin mỗi người đều có thể đạt được mục tiêu của mình bằng sự kiên trì, niềm đam mê và sự đồng hành đúng cách.</p>
+    </div>
+    <div class="dci">
+      <div class="card">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></div>
+        <div class="lt">D · Dream</div>
+        <h3>Dream-Driven Learning</h3>
+        <p>Chúng tôi đồng hành cùng bạn trên hành trình chinh phục giấc mơ, tin rằng mỗi người đều có thể đạt được mục tiêu thông qua sự kiên trì và niềm đam mê.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM2 20a7 7 0 0 1 14 0M17 11a3.5 3.5 0 0 0 0-7M22 20a7 7 0 0 0-5-6.7"/></svg></div>
+        <div class="lt">C · Collaborate</div>
+        <h3>Collaborative Excellence</h3>
+        <p>Chúng tôi tin sự xuất sắc không đến từ cạnh tranh, mà từ sự hợp tác, chia sẻ và cùng nhau phát triển mỗi ngày.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 1 4 10.5c-.7.7-1 1.3-1 2.5H9c0-1.2-.3-1.8-1-2.5A6 6 0 0 1 12 3z"/></svg></div>
+        <div class="lt">I · Inspire</div>
+        <h3>Inspiration Through Self-Discovery</h3>
+        <p>Mỗi hành động nhỏ trong học tập đều có thể truyền cảm hứng, giúp bạn tự tin khám phá bản thân, tìm thấy đam mê và sứ mệnh của mình.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENGLISH FEATURE ============ -->
+<section class="sec-pad" id="tieng-anh">
+  <div class="wrap feature">
+    <div class="media">
+      <image-slot id="english-photo" class="photo" shape="rounded" radius="26" src="assets/english-class.png" placeholder="Thả ảnh lớp Tiếng Anh"></image-slot>
+      <div class="chip"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--gold-700)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5l11 7-11 7z"/></svg>Học online qua Zoom</div>
+    </div>
+    <div class="copy">
+      <span class="kicker">Chương trình Tiếng Anh</span>
+      <h2>Yêu Tiếng Anh để định hình và thăng hoa với chính mình</h2>
+      <p class="lead">Với EduNex, Tiếng Anh không còn là rào cản mà trở thành người bạn đồng hành, chìa khoá để bạn tự tin giao tiếp, học tập và làm việc tại New Zealand.</p>
+      <div class="list">
+        <div class="it"><span class="tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><div><b>Lộ trình cá nhân hoá</b><span>Theo trình độ &amp; mục tiêu riêng của bạn</span></div></div>
+        <div class="it"><span class="tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><div><b>Lớp 1:1 &amp; nhóm nhỏ</b><span>Tương tác cao, sửa lỗi trực tiếp</span></div></div>
+        <div class="it"><span class="tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><div><b>Tiếng Anh giao tiếp &amp; công sở</b><span>Ứng dụng vào học tập và đi làm</span></div></div>
+        <div class="it"><span class="tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><div><b>Đồng hành tận tâm</b><span>Theo sát tiến độ qua app EduNex</span></div></div>
+      </div>
+      <div class="cta">
+        <a class="btn btn-gold" href="#lien-he">Đăng ký học thử</a>
+        <a class="btn btn-ghost" href="#khoa-hoc">Xem các gói coaching</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUNDER ============ -->
+<section class="band sec-pad" id="founder">
+  <div class="wrap founder">
+    <div class="media">
+      <image-slot id="founder-photo" class="photo" shape="rounded" radius="28" src="https://edunex.co.nz/wp-content/uploads/2025/03/Ms-Jane.png" placeholder="Thả ảnh Ms. Jane"></image-slot>
+    </div>
+    <div class="copy">
+      <span class="kicker">Nhà sáng lập</span>
+      <div class="quote">“Tiếng Anh là chìa khoá để phá bỏ giới hạn, định hình bản thân và thăng hoa trong cuộc sống.”</div>
+      <p>Đó là lý do Ms. Jane xây dựng EduNex, nơi cô cùng đội ngũ tận tâm đồng hành với các bạn trẻ và những người phụ nữ không đầu hàng, an phận; giúp họ tự tin dùng Tiếng Anh, khám phá tiềm năng và hiện thực hoá giấc mơ của mình.</p>
+      <p>Hành trình của cô bắt đầu từ một ngôi làng nhỏ, nhưng đã thực sự lớn lên. Và giờ đây, cô mong được cùng bạn viết tiếp những câu chuyện thành công.</p>
+      <div class="sig">
+        <span class="av" style="width:46px;height:46px;border-radius:50%;background:linear-gradient(145deg,#FFC93D,#D29900);display:flex;align-items:center;justify-content:center;font-family:var(--head);font-weight:800;color:#23252E">J</span>
+        <div>
+          <div class="nm">Ms. Jane (Jane Tran)</div>
+          <div class="rl">Nhà sáng lập EduNex · English &amp; Career Coach</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PACKAGES ============ -->
+<section class="sec-pad" id="khoa-hoc">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Khoá học nổi bật</span>
+      <h2>Coaching CV &amp; Phỏng vấn: biến bạn thành ứng viên xuất sắc</h2>
+      <p>Đồng hành trực tiếp từ chuyên gia, từ lộ trình tự học đến gói VIP cam kết có việc tại New Zealand.</p>
+    </div>
+    <div class="pkgs">
+      <div class="pkg">
+        <div class="tier">Silver · Gói bạc</div>
+        <h3>Lộ trình tìm việc tại New Zealand từ A–Z</h3>
+        <div class="price">$49</div>
+        <div class="desc">Khoá tự học hệ thống: từ viết CV đến nhận job offer, từng bước rõ ràng.</div>
+        <a class="btn btn-ghost" href="#lien-he">Tìm hiểu</a>
+      </div>
+      <div class="pkg">
+        <div class="tier">Gold · Gói vàng</div>
+        <h3>Coaching 1:1 · Tăng tốc CV &amp; Phỏng vấn</h3>
+        <div class="price">$199</div>
+        <div class="desc">Kèm 1:1 để hoàn thiện CV và luyện phỏng vấn, tự tin chinh phục nhà tuyển dụng.</div>
+        <a class="btn btn-ghost" href="#lien-he">Tìm hiểu</a>
+      </div>
+      <div class="pkg pop">
+        <span class="pop-tag">Phổ biến nhất</span>
+        <div class="tier">Platinum · Gói bạch kim</div>
+        <h3>Coaching 1:1 · Làm chủ tuyển dụng, tăng tốc về đích</h3>
+        <div class="price">$399</div>
+        <div class="desc">Đồng hành chuyên sâu suốt quá trình ứng tuyển để bạn về đích nhanh hơn.</div>
+        <a class="btn btn-gold" href="#lien-he">Đăng ký</a>
+      </div>
+      <div class="pkg">
+        <div class="tier">Premium · Gói kim cương</div>
+        <h3>Chương trình đồng hành VIP · Cam kết có việc!</h3>
+        <div class="price">$4,000</div>
+        <div class="desc">Gói cao cấp nhất, đồng hành toàn diện với cam kết kết quả rõ ràng.</div>
+        <a class="btn btn-dark" href="#lien-he">Liên hệ tư vấn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOG ============ -->
+<section class="band sec-pad" id="blog">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Bài viết mới</span>
+      <h2>Câu chuyện &amp; cảm hứng từ EduNex</h2>
+    </div>
+    <div class="blog">
+      <a class="post" href="https://edunex.co.nz/chi-oi-co-phai-em-dang-la-ke-that-bai-khong/" target="_blank" rel="noopener">
+        <div class="ph"><span class="dt">24/11/2025</span></div>
+        <div class="bd">
+          <h3>Chị ơi, có phải em đang là kẻ thất bại không?</h3>
+          <span class="rm">Đọc tiếp <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="post" href="https://edunex.co.nz/trong-hanh-trinh-hoc-tieng-anh-cua-toi-co-nhung-ky-niem-nao-that-dang-nho-khong/" target="_blank" rel="noopener">
+        <div class="ph"><span class="dt">24/11/2025</span></div>
+        <div class="bd">
+          <h3>Hành trình học Tiếng Anh của tôi: những kỷ niệm đáng nhớ</h3>
+          <span class="rm">Đọc tiếp <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="post" href="https://edunex.co.nz/tham-dai-hoc-sydney-top-3-tai-uc-va-25-tren-the-gioi/" target="_blank" rel="noopener">
+        <div class="ph"><span class="dt">24/11/2025</span></div>
+        <div class="bd">
+          <h3>Thăm Đại học Sydney: Top 3 tại Úc và #25 thế giới</h3>
+          <span class="rm">Đọc tiếp <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Cảm nhận học viên</span>
+      <h2>Khách hàng nói gì về EduNex?</h2>
+    </div>
+    <div class="tms">
+      <div class="tm">
+        <div class="stars">★★★★★</div>
+        <p>“Mình từng rất ngại nói Tiếng Anh. Sau lộ trình cùng Ms. Jane, mình tự tin phỏng vấn và đã có việc tại Auckland.”</p>
+        <div class="who"><span class="av">MT</span><div><div class="nm">Mai T.</div><div class="rl">Học viên · Auckland</div></div></div>
+      </div>
+      <div class="tm">
+        <div class="stars">★★★★★</div>
+        <p>“Coaching 1:1 rất sát sao. CV của mình được lột xác hoàn toàn, nhà tuyển dụng phản hồi tích cực hẳn.”</p>
+        <div class="who"><span class="av">HL</span><div><div class="nm">Hương L.</div><div class="rl">Gói Platinum</div></div></div>
+      </div>
+      <div class="tm">
+        <div class="stars">★★★★★</div>
+        <p>“Điều mình quý nhất là sự đồng hành tận tâm, không chỉ dạy Tiếng Anh mà còn truyền cảm hứng để mình dám mơ lớn.”</p>
+        <div class="who"><span class="av">QA</span><div><div class="nm">Quỳnh A.</div><div class="rl">Học viên · Wellington</div></div></div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:12.5px;color:var(--muted);margin-top:20px">Cảm nhận mang tính minh hoạ cho bản thiết kế.</p>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="sec-pad" id="lien-he" style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta-band">
+      <div class="glow"></div>
+      <div>
+        <h2>Sẵn sàng bắt đầu hành trình của bạn?</h2>
+        <p>Đặt lịch tư vấn miễn phí cùng Ms. Jane để tìm lộ trình Tiếng Anh và sự nghiệp phù hợp nhất với bạn.</p>
+      </div>
+      <div class="act">
+        <a class="btn btn-gold btn-lg" href="https://www.facebook.com/jane.tran1510" target="_blank" rel="noopener">Tư vấn miễn phí</a>
+        <a class="btn btn-lg" href="EduNex LMS.html" style="background:rgba(255,255,255,.12);color:#fff">Vào app học viên</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#top">
+          <span class="mark"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#23252E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 21.5 8 12 12 2.5 8z"/><path d="M6.5 10v3.2c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8V10"/><path d="M21.5 8v4.2"/></svg></span>
+          <span class="word">Edu<b>Nex</b></span>
+        </a>
+        <p class="ab">Learn More · Achieve More · Be Unstoppable. Đồng hành Tiếng Anh &amp; sự nghiệp cho người Việt tại New Zealand.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Khám phá</h4>
+        <a href="#triet-ly">Giới thiệu</a>
+        <a href="#tieng-anh">Tiếng Anh</a>
+        <a href="#khoa-hoc">CV · Phỏng vấn</a>
+        <a href="#blog">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h4>Khoá học</h4>
+        <a href="#khoa-hoc">Silver · $49</a>
+        <a href="#khoa-hoc">Gold · $199</a>
+        <a href="#khoa-hoc">Platinum · $399</a>
+        <a href="#khoa-hoc">Premium · $4,000</a>
+      </div>
+      <div class="foot-col">
+        <h4>Liên hệ</h4>
+        <a href="https://www.facebook.com/jane.tran1510" target="_blank" rel="noopener">Facebook Ms. Jane</a>
+        <a href="EduNex LMS.html">Đăng nhập học viên</a>
+        <a href="#lien-he">Tư vấn miễn phí</a>
+        <span style="display:block;font-size:14px;color:var(--muted);padding:6px 0">Auckland, New Zealand</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="cp">Bản quyền © 2026 EduNex. Đã đăng ký bản quyền.</span>
+      <div class="soc">
+        <a href="https://www.facebook.com/jane.tran1510" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a>
+        <a href="EduNex LMS.html" aria-label="App"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 6h4"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script>
+  (function(){
+    var hamb = document.getElementById('hamb');
+    var menu = document.getElementById('mmenu');
+    hamb.addEventListener('click', function(){
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    });
+    menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.style.display='none'; }); });
+  })();
+</script>
+
+</body>
+</html>

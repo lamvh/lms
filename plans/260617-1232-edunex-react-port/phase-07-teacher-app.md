@@ -26,7 +26,7 @@ flag gaps rather than inventing screens.
 ## Related Code Files
 - Create: `src/app/teacher/TeacherApp.tsx` (+ sub-views as the source defines)
 - Modify: `src/routes.tsx` (teacher route)
-- Source ref: `/tmp/edunex_design/edunex-lms/project/edunex/teacher.jsx`
+- Source ref: `design/prototype/edunex/teacher.jsx`
 
 ## Implementation Steps
 1. Read `teacher.jsx` fully; enumerate the actual views it renders.

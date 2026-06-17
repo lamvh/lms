@@ -27,7 +27,7 @@ routing that replaces the prototype's `useState('screen')` switcher.
 ## Related Code Files
 - Create: `src/app/Login.tsx`, `src/app/admin/AdminShell.tsx`, `src/app/admin/useToasts.ts`, `src/app/admin/admin-nav.ts`
 - Modify: `src/routes.tsx` (nested admin routes; login)
-- Source ref: `/tmp/edunex_design/edunex-lms/project/{edunex/login.jsx,edunex/shell.jsx,edunex/app.jsx}`
+- Source ref: `design/prototype/{edunex/login.jsx,edunex/shell.jsx,edunex/app.jsx}`
 
 ## Implementation Steps
 1. Port `Login.tsx`; wire role → `navigate()`.

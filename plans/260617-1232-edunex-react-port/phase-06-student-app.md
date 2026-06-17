@@ -26,7 +26,7 @@ inside an iOS device frame; here it renders responsively (mobile-first, optional
 ## Related Code Files
 - Create: `src/app/student/StudentApp.tsx` + tab/view components + `src/app/student/student-tabs.ts`
 - Modify: `src/routes.tsx` (student nested routes)
-- Source ref: `/tmp/edunex_design/edunex-lms/project/edunex/student.jsx`
+- Source ref: `design/prototype/edunex/student.jsx`
 
 ## Implementation Steps
 1. Port shell + bottom tab bar; responsive container replacing iOS frame.

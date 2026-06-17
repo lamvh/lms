@@ -28,7 +28,7 @@ ships independently of the LMS app. Full Tailwind, pixel-matched to the prototyp
 ## Related Code Files
 - Create: `src/landing/LandingPage.tsx` + 10 section components + `src/landing/landing-data.ts`
 - Modify: `src/routes.tsx` (mount `LandingPage` at `/`)
-- Source ref: `/tmp/edunex_design/edunex-lms/project/EduNex Landing.html` (lines 262-586 markup; 10-258 styles → Tailwind)
+- Source ref: `design/prototype/EduNex Landing.html` (lines 262-586 markup; 10-258 styles → Tailwind)
 
 ## Implementation Steps
 1. Translate `:root` landing tokens to Tailwind classes (already in config from P1); map `.btn`, `.eyebrow`, `.kicker`, `.logo` to component classes/utilities.

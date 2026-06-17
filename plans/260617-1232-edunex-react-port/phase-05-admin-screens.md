@@ -31,7 +31,7 @@ timetable, materials, teachers, students, student detail, settings. Largest phas
 ## Related Code Files
 - Create: `src/app/admin/{Dashboard,ClassList,ClassDetail,CalendarView,MaterialsLibrary,PeopleView,StudentDetail,Settings}.tsx`
 - Modify: `src/routes.tsx` (replace P4 stubs with real screens)
-- Source ref: `/tmp/edunex_design/edunex-lms/project/{edunex/dashboard.jsx,edunex/classes.jsx,edunex/calendar.jsx,edunex/people.jsx,src/admin-materials.jsx}`
+- Source ref: `design/prototype/{edunex/dashboard.jsx,edunex/classes.jsx,edunex/calendar.jsx,edunex/people.jsx,src/admin-materials.jsx}`
 
 ## Implementation Steps
 1. Dashboard (default variant): stat cards, today's sessions, recent activity, class quick-cards.

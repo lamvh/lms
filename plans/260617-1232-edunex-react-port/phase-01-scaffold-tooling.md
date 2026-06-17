@@ -33,7 +33,7 @@ wire a router skeleton. Foundation for every later phase.
 - Create: `public/image-slot.js` (copy from prototype), `public/assets/english-class.png` (copy)
 - Create: `public/assets/ms-jane.png` (download from https://edunex.co.nz/wp-content/uploads/2025/03/Ms-Jane.png) <!-- Updated: Validation Session 1 - bundle Ms-Jane locally -->
 - Create: `vitest.config.ts` (or merge into vite config), `src/test/setup.ts`
-- Source ref: `/tmp/edunex_design/edunex-lms/project/{styles.css,edunex/theme.css,image-slot.js}`
+- Source ref: `design/prototype/{styles.css,edunex/theme.css,image-slot.js}`
 
 ## Implementation Steps
 1. `npm create vite@latest . -- --template react-ts` in `lms-edunex/`; install deps.

@@ -19,7 +19,7 @@ mode: tdd
 ## Overview
 
 Recreate the Claude Design EduNex prototype as a real React app in empty target dir `lms-edunex/`.
-Source prototype: `/tmp/edunex_design/edunex-lms/project/` (React 18 UMD + in-browser Babel, global-scope
+Source prototype: `design/prototype/` (React 18 UMD + in-browser Babel, global-scope
 components, `window.VZ` data, inline-style + CSS-var tokens).
 
 Two deliverables: (1) `EduNex Landing.html` marketing page, (2) full EduNex LMS app
@@ -97,7 +97,7 @@ P2 is independent of P3-P7 and can ship/deploy on its own after P1.
 ## Validation Log
 
 ### Session 1 (2026-06-17)
-Verification: greenfield target (empty dir) so plan file-refs are create-targets, not existing-symbol claims. All source prototype refs confirmed present in `/tmp/edunex_design/edunex-lms/project/`. Failed: 0.
+Verification: greenfield target (empty dir) so plan file-refs are create-targets, not existing-symbol claims. All source prototype refs confirmed present in `design/prototype/`. Failed: 0.
 
 Decisions confirmed (4 questions):
 1. **Post-login routing** → each role lands on its own home (admin→`/admin`, coach→`/teacher`, student→`/student`). Resolves prior open question. Propagated: P4.

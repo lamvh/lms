@@ -1,0 +1,56 @@
+/* ============================================================
+   EduNex LMS — theme override (load AFTER styles.css)
+   Warm charcoal structure + EduNex gold accent, cream canvas.
+   Re-skins the Vina token system without touching components.
+   ============================================================ */
+
+:root {
+  /* Primary scale → warm charcoal (sidebar, headings, structure) */
+  --p-900:#15171C; --p-800:#1C1F26; --p-700:#242832; --p-600:#333845;
+  --p-500:#474D5A; --p-400:#6E7480; --p-300:#A2A7B1; --p-200:#D5D8DE;
+  --p-100:#E9E6DE; --p-50:#F6F3EC;
+
+  /* Accent scale → EduNex gold */
+  --a-700:#B07E00; --a-600:#D29900; --a-500:#F2B400; --a-400:#FFC93D;
+  --a-100:#FFEFC2; --a-50:#FFF9E8;
+
+  /* Theme hooks */
+  --brand:#22262F; --brand-strong:#15171C; --accent:#F2B400;
+
+  /* Warm neutrals / surfaces */
+  --ink-900:#191B20; --ink-800:#262A31; --ink-700:#383D46; --ink-600:#4D525C;
+  --ink-500:#646A75; --ink-400:#8B909B; --ink-300:#AEB2BB;
+  --line:#E9E4D9; --line-soft:#F1EDE3;
+  --bg:#F6F3EC; --surface:#FFFFFF; --surface-2:#FBF8F1; --surface-3:#F1ECE1;
+
+  /* Status — keep green/amber meaningful, distinct from gold accent */
+  --success:#2E9E6B; --success-bg:#DFF2E8;
+  --warn:#C9821F; --warn-bg:#FBF1E0;
+  --danger:#D55B43; --danger-bg:#FBE7E2;
+  --info:#2A6298; --info-bg:#E5EEF6;
+
+  /* Zalo stays its own blue (real brand) */
+  --zalo:#0068FF; --zalo-bg:#E5F0FF;
+
+  --font-body:'Plus Jakarta Sans','Public Sans',system-ui,sans-serif;
+}
+
+/* App canvas behind the device frames — warm dark */
+body { background:#201E1A; }
+
+/* ---- Gold-forward button treatment so yellow reads as primary ---- */
+.btn-primary { background:var(--accent); color:var(--ink-900); box-shadow:0 2px 10px rgba(242,180,0,.30); }
+.btn-primary:hover { background:var(--a-400); }
+.btn-accent { background:var(--accent); color:var(--ink-900); }
+.btn-accent:hover { background:var(--a-400); filter:none; }
+.btn-soft { background:var(--a-50); color:var(--a-700); }
+.btn-soft:hover { background:var(--a-100); }
+
+/* Active class status stays green (not gold) */
+.badge-active { background:var(--success-bg); color:#1F8456; }
+.badge-active .dot { background:#2E9E6B; }
+
+/* Chips & segmented active use charcoal brand — fine on cream */
+.chip.is-on { background:var(--brand); color:#fff; border-color:var(--brand); }
+
+::selection { background:var(--a-100); color:var(--ink-900); }
