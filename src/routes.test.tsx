@@ -26,6 +26,6 @@ describe('app routes', () => {
 
   it('mounts the student app under /student', () => {
     renderAt('/student');
-    expect(screen.getByTestId('student-stub')).toBeInTheDocument();
+    expect(screen.getByText(/Xin chào/)).toBeInTheDocument();
   });
 });

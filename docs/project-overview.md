@@ -150,6 +150,16 @@ See the plan for phase detail and status.
 
 > Add an entry per feature / change. Format: `### YYYY-MM-DD · summary` then bullets.
 
+### 2026-06-17 · Phase 8 done: student app
+- Built the student mobile portal (`StudentApp`) at `/student`: bottom-tab nav (Home, Courses,
+  Homework, Profile) + sub-pages (class detail, results, payments). Centred mobile frame on desktop.
+- Home (today/upcoming sessions, homework due, quick actions), Courses (progress cards), Homework
+  (filter chips + submit/feedback states), Profile (menu, programs, settings, sign-out), class detail
+  (Zoom join/copy + materials). Wired to the focus student's data; reuses SessionCard.
+- Internal tab/page state machine (matches prototype); `award` icon mapped to `star`.
+- 4 new tests (home greeting, tab switches, sign-out) — 56 total.
+- Verified: 56 tests, `build`, `build-storybook` all green.
+
 ### 2026-06-17 · Phase 7 done: admin screens
 - Built 8 admin screens wired to real data: Dashboard (Balanced layout: greeting, StatCards,
   today schedule, quick actions, starting soon, programs table), Classes (ClassCard grid + filter

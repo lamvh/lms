@@ -15,9 +15,9 @@ import { Materials } from './app/admin/Materials';
 import { People } from './app/admin/People';
 import { StudentDetail } from './app/admin/StudentDetail';
 import { Settings } from './app/admin/Settings';
+import { StudentApp } from './app/student/StudentApp';
 
-/* Role-app stubs — student P8, teacher P9. */
-const StudentStub = () => <div data-testid="student-stub">Student app</div>;
+/* Role-app stub — teacher P9. */
 const TeacherStub = () => <div data-testid="teacher-stub">Teacher app</div>;
 
 /** Route table shared by the browser router (app) and memory router (tests). */
@@ -40,7 +40,7 @@ export const routes: RouteObject[] = [
       { path: 'settings', element: <Settings /> },
     ],
   },
-  { path: '/student/*', element: <StudentStub /> },
+  { path: '/student/*', element: <StudentApp /> },
   { path: '/teacher/*', element: <TeacherStub /> },
 ];
 

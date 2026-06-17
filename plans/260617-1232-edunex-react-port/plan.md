@@ -59,7 +59,7 @@ after the system exists.
 | 5 | [Landing page](./phase-05-landing-page.md) | Done | 5h |
 | 6 | [Login & app shell](./phase-06-login-app-shell.md) | Done | 3h |
 | 7 | [Admin screens](./phase-07-admin-screens.md) | Done | 8h |
-| 8 | [Student app](./phase-08-student-app.md) | Pending | 5h |
+| 8 | [Student app](./phase-08-student-app.md) | Done | 5h |
 | 9 | [Teacher app](./phase-09-teacher-app.md) | Pending | 3h |
 | 10 | [Polish & QA](./phase-10-polish-qa.md) | Pending | 3h |
 

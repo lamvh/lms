@@ -1,7 +1,7 @@
 ---
 phase: 8
 title: "Student app"
-status: pending
+status: done
 priority: P2
 effort: "5h"
 dependencies: [6]
@@ -42,9 +42,9 @@ inside an iOS device frame; here it renders responsively (mobile-first, optional
 - `StudentTimetable.test.tsx`: shows sessions only for classes c2/c5/c6.
 
 ## Success Criteria
-- [ ] All student tabs render focus-student data; navigation + sheets work.
-- [ ] Responsive on mobile and desktop without device frame.
-- [ ] Tests green.
+- [x] All student tabs render focus-student data; navigation + sheets work.
+- [x] Responsive on mobile and desktop without device frame.
+- [x] Tests green.
 
 ## Risk Assessment
 - `student.jsx` is large with internal `page` deep-nav: map carefully to routes vs internal state; do not lose any sub-screen.
