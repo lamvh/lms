@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EduNex · Components</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="edunex/theme.css" />
+<style>
+  /* ---- documentation chrome (not a product component) ---- */
+  html,body { background:var(--bg); }
+  body { color:var(--ink-700); }
+  .doc { max-width:1240px; margin:0 auto; padding:56px 40px 120px; }
+
+  .doc-head { margin-bottom:14px; }
+  .doc-eyebrow { font-family:var(--font-head); font-size:12px; font-weight:700;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--a-700); }
+  .doc-title { font-family:'Bricolage Grotesque',var(--font-head); font-size:46px;
+    font-weight:700; letter-spacing:-.02em; color:var(--ink-900); margin:6px 0 10px; line-height:1.02; }
+  .doc-sub { font-size:16px; color:var(--ink-500); max-width:680px; line-height:1.55; }
+  .doc-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+  .doc-meta .tag { font-size:12px; padding:5px 11px; background:var(--surface); border:1px solid var(--line); color:var(--ink-600); }
+
+  .doc-section { margin-top:56px; }
+  .doc-section > h2 { font-family:'Bricolage Grotesque',var(--font-head); font-size:13px;
+    font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-400);
+    padding-bottom:12px; border-bottom:1px solid var(--line); margin-bottom:24px;
+    display:flex; align-items:center; gap:10px; }
+  .doc-section > h2 .num { color:var(--a-600); }
+
+  .blocks { display:grid; gap:20px; grid-template-columns:1fr; }
+
+  .block { padding:24px 26px 26px; }
+  .block-head { margin-bottom:20px; }
+  .block-name { font-family:var(--font-head); font-size:18px; font-weight:700; color:var(--ink-900); }
+  .block-purpose { font-size:13.5px; color:var(--ink-500); margin-top:3px; line-height:1.5; max-width:760px; }
+  .block-props { font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--ink-400);
+    margin-top:9px; background:var(--surface-2); border:1px solid var(--line-soft);
+    padding:6px 10px; border-radius:var(--r-xs); display:inline-block; }
+  .block-titlerow { display:flex; align-items:center; justify-content:space-between; gap:14px; }
+  .upd { font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--ink-400);
+    background:var(--surface-2); border:1px solid var(--line-soft); padding:4px 10px;
+    border-radius:var(--r-pill); white-space:nowrap; flex-shrink:0; }
+  .upd b { color:var(--a-700); font-weight:600; }
+
+  .states { display:flex; flex-wrap:wrap; gap:14px; align-items:flex-end; }
+  .state { display:flex; flex-direction:column; gap:9px; }
+  .state-demo { background:var(--surface-2); border:1px dashed var(--line);
+    border-radius:var(--r-md); padding:18px 20px; min-height:64px;
+    display:flex; align-items:center; justify-content:center; gap:12px; }
+  .state-demo.tight { padding:14px; }
+  .state-demo.plain { background:transparent; border:none; padding:0; min-height:0; }
+  .state-lbl { font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.04em;
+    color:var(--ink-400); text-align:center; text-transform:uppercase; }
+
+  .grid-auto { display:grid; gap:14px; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); }
+
+  /* swatches */
+  .sw-row { display:flex; flex-wrap:wrap; gap:10px; }
+  .sw { width:104px; }
+  .sw .chip-color { height:54px; border-radius:var(--r-sm); border:1px solid rgba(0,0,0,.06); box-shadow:var(--sh-1); }
+  .sw .nm { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-700); margin-top:7px; font-weight:500; }
+  .sw .hx { font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--ink-400); margin-top:1px; }
+
+  /* icon grid */
+  .icon-cell { display:flex; flex-direction:column; align-items:center; gap:8px;
+    padding:14px 6px; border-radius:var(--r-sm); background:var(--surface-2); color:var(--ink-700); }
+  .icon-cell .nm { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--ink-400); }
+
+  /* type specimens */
+  .type-row { display:flex; align-items:baseline; gap:20px; padding:12px 0; border-bottom:1px solid var(--line-soft); }
+  .type-row:last-child { border-bottom:none; }
+  .type-row .meta { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-400); width:160px; flex-shrink:0; }
+
+  /* doc-only states the product CSS does not define yet */
+  .btn[disabled] { opacity:.45; cursor:not-allowed; box-shadow:none; filter:none; }
+  .btn-primary.force-hover { background:var(--a-400); }
+  .btn-accent.force-hover  { background:var(--a-400); filter:none; }
+  .btn-ghost.force-hover   { background:var(--surface-2); border-color:var(--ink-300); }
+  .btn-soft.force-hover    { background:var(--a-100); }
+  .btn-zalo.force-hover    { background:#D6E7FF; }
+  .chip.force-hover        { background:var(--surface-2); }
+  .field.force-focus { outline:none; border-color:var(--a-500); box-shadow:0 0 0 3px var(--a-100); }
+  .field.is-error { border-color:var(--danger); box-shadow:0 0 0 3px var(--danger-bg); }
+  .field[disabled] { background:var(--surface-3); color:var(--ink-400); cursor:not-allowed; }
+  .spin { width:15px; height:15px; border-radius:50%; border:2px solid currentColor;
+    border-top-color:transparent; animation:spin .7s linear infinite; opacity:.9; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+
+  .modal-host { position:relative; width:100%; min-height:200px; overflow:hidden;
+    border-radius:var(--r-md); background:var(--surface-3); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- real product components -->
+<script src="edunex/data.js"></script>
+<script type="text/babel" src="src/icons.jsx"></script>
+<script type="text/babel" src="src/ui.jsx"></script>
+<script type="text/babel" src="edunex/login.jsx"></script>
+<script type="text/babel" src="edunex/dashboard.jsx"></script>
+<script type="text/babel" src="edunex/classes.jsx"></script>
+<script type="text/babel" src="edunex/student.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState } = React;
+const VZ = window.VZ;
+const C_ACTIVE = VZ.classes[0];
+const C_SOON = VZ.classes.find(c=>c.status==='soon') || VZ.classes[0];
+const C_PAUSED = VZ.classes.find(c=>c.status==='paused') || VZ.classes[0];
+const SESS = { ...C_ACTIVE.schedule[0], class:C_ACTIVE };
+const noop = ()=>{};
+
+/* ---------- doc layout helpers ---------- */
+function Block({ name, purpose, props, date='2026-06-17', children }) {
+  return (
+    <div className="card block">
+      <div className="block-head">
+        <div className="block-titlerow">
+          <div className="block-name">{name}</div>
+          <span className="upd">Updated <b>{date}</b></span>
+        </div>
+        {purpose && <div className="block-purpose">{purpose}</div>}
+        {props && <div className="block-props">{props}</div>}
+      </div>
+      {children}
+    </div>
+  );
+}
+function State({ label, tight, plain, children }) {
+  return (
+    <div className="state">
+      <div className={'state-demo'+(tight?' tight':'')+(plain?' plain':'')}>{children}</div>
+      <div className="state-lbl">{label}</div>
+    </div>
+  );
+}
+function Section({ num, title, children }) {
+  return (
+    <section className="doc-section">
+      <h2><span className="num">{num}</span> {title}</h2>
+      {children}
+    </section>
+  );
+}
+
+/* ---------- foundations data ---------- */
+const PRIMARY = [['p-900','#15171C'],['p-800','#1C1F26'],['p-700','#242832'],['p-600','#333845'],['p-500','#474D5A'],['p-400','#6E7480'],['p-300','#A2A7B1'],['p-200','#D5D8DE'],['p-100','#E9E6DE'],['p-50','#F6F3EC']];
+const ACCENT = [['a-700','#B07E00'],['a-600','#D29900'],['a-500','#F2B400'],['a-400','#FFC93D'],['a-100','#FFEFC2'],['a-50','#FFF9E8']];
+const SURF = [['ink-900','#191B20'],['ink-700','#383D46'],['ink-500','#646A75'],['ink-400','#8B909B'],['ink-300','#AEB2BB'],['line','#E9E4D9'],['bg','#F6F3EC'],['surface','#FFFFFF'],['surface-2','#FBF8F1'],['surface-3','#F1ECE1']];
+const STATUS_TOKENS = [['success','#2E9E6B'],['success-bg','#DFF2E8'],['warn','#C9821F'],['warn-bg','#FBF1E0'],['danger','#D55B43'],['danger-bg','#FBE7E2'],['info','#2A6298'],['info-bg','#E5EEF6'],['zalo','#0068FF'],['zalo-bg','#E5F0FF']];
+const ICONS = ['dashboard','classes','calendar','materials','teachers','students','zalo','bell','search','plus','chevL','chevR','chevDown','chevUp','download','upload','link','external','check','clock','filter','more','home','user','settings','logout','send','eye','edit','trash','pin','mail','phone','play','file','checkSquare','x','menu','sparkle','arrowR','grid','list','image','video','audio','share','printer','lock','sun','book','flag','star'];
+
+function Swatch({ nm, hx }) {
+  const dark = parseInt(hx.slice(1),16) < 0x888888;
+  return (
+    <div className="sw">
+      <div className="chip-color" style={{ background:hx }}></div>
+      <div className="nm">{nm}</div>
+      <div className="hx">{hx}</div>
+    </div>
+  );
+}
+
+/* ---------- interactive demo wrappers ---------- */
+function SegDemo() {
+  const [v,setV] = useState('week');
+  return <Segmented value={v} onChange={setV} options={[{value:'day',label:'Day'},{value:'week',label:'Week'},{value:'month',label:'Month'}]} />;
+}
+function SegIconDemo() {
+  const [v,setV] = useState('grid');
+  return <Segmented size="sm" value={v} onChange={setV} options={[{value:'grid',label:'Grid',icon:'grid'},{value:'list',label:'List',icon:'list'}]} />;
+}
+function ToggleDemo({ start, size }) {
+  const [on,setOn] = useState(start);
+  return <Toggle on={on} onChange={setOn} size={size} />;
+}
+function ModalDemo() {
+  const [open,setOpen] = useState(false);
+  return (
+    <div className="modal-host">
+      <div style={{ padding:24 }}>
+        <button className="btn btn-primary btn-sm" onClick={()=>setOpen(true)}>Open modal</button>
+      </div>
+      <Modal open={open} onClose={()=>setOpen(false)} title="Add a student" sub="Enrol a learner into a class" width={420}>
+        <input className="field" placeholder="Full name" style={{ marginBottom:12 }} />
+        <input className="field" placeholder="Email" />
+        <div style={{ display:'flex', gap:10, marginTop:18, justifyContent:'flex-end' }}>
+          <button className="btn btn-ghost btn-sm" onClick={()=>setOpen(false)}>Cancel</button>
+          <button className="btn btn-primary btn-sm" onClick={()=>setOpen(false)}>Save</button>
+        </div>
+      </Modal>
+    </div>
+  );
+}
+function SheetDemo() {
+  const [open,setOpen] = useState(false);
+  return (
+    <div className="modal-host" style={{ minHeight:240 }}>
+      <div style={{ padding:24 }}>
+        <button className="btn btn-soft btn-sm" onClick={()=>setOpen(true)}>Open sheet</button>
+      </div>
+      <Sheet open={open} onClose={()=>setOpen(false)} title="Lesson options">
+        <div style={{ display:'flex', flexDirection:'column', gap:8 }}>
+          {['Join Zoom','Download materials','Mark attendance'].map(t=>(
+            <button key={t} className="btn btn-ghost" style={{ justifyContent:'flex-start' }} onClick={()=>setOpen(false)}>{t}</button>
+          ))}
+        </div>
+      </Sheet>
+    </div>
+  );
+}
+
+/* ============ PAGE ============ */
+function Page() {
+  return (
+    <div className="doc">
+      <header className="doc-head">
+        <div className="doc-eyebrow">EduNex LMS · Build contract</div>
+        <h1 className="doc-title">Component Page</h1>
+        <p className="doc-sub">Every component the EduNex design relies on, shown across its states so engineering can implement the system before screens are assembled. Built from the real <code style={{fontFamily:"'JetBrains Mono',monospace",fontSize:13}}>src/</code> + <code style={{fontFamily:"'JetBrains Mono',monospace",fontSize:13}}>edunex/</code> components and tokens.</p>
+        <div className="doc-meta">
+          <span className="tag">Bricolage Grotesque · headings</span>
+          <span className="tag">Plus Jakarta Sans · body</span>
+          <span className="tag">Gold #F2B400 accent</span>
+          <span className="tag">Warm charcoal structure</span>
+        </div>
+      </header>
+
+      {/* ---- FOUNDATIONS ---- */}
+      <Section num="01" title="Foundations">
+        <div className="blocks">
+          <Block name="Color · Primary (warm charcoal)" purpose="Structure, sidebar, headings and text. Scale runs darkest to lightest.">
+            <div className="sw-row">{PRIMARY.map(([n,h])=><Swatch key={n} nm={n} hx={h} />)}</div>
+          </Block>
+          <Block name="Color · Accent (EduNex gold)" purpose="Primary actions, active states, highlights. a-500 is the brand gold.">
+            <div className="sw-row">{ACCENT.map(([n,h])=><Swatch key={n} nm={n} hx={h} />)}</div>
+          </Block>
+          <Block name="Color · Surfaces & neutrals" purpose="Cream canvas, white cards, hairline borders and text greys.">
+            <div className="sw-row">{SURF.map(([n,h])=><Swatch key={n} nm={n} hx={h} />)}</div>
+          </Block>
+          <Block name="Color · Status" purpose="Semantic pairs (foreground · background). Zalo keeps its real brand blue.">
+            <div className="sw-row">{STATUS_TOKENS.map(([n,h])=><Swatch key={n} nm={n} hx={h} />)}</div>
+          </Block>
+
+          <Block name="Typography" purpose="Bricolage Grotesque for display and headings, Plus Jakarta Sans for body and UI.">
+            <div>
+              <div className="type-row"><span className="meta">Bricolage · 46 / 700</span><span style={{ fontFamily:"'Bricolage Grotesque',sans-serif", fontSize:46, fontWeight:700, letterSpacing:'-.02em', color:'var(--ink-900)' }}>Learn More</span></div>
+              <div className="type-row"><span className="meta">Head · 24 / 700</span><span style={{ fontFamily:'var(--font-head)', fontSize:24, fontWeight:700, color:'var(--ink-900)' }}>Class dashboard</span></div>
+              <div className="type-row"><span className="meta">Body · 15 / 500</span><span style={{ fontFamily:'var(--font-body)', fontSize:15, fontWeight:500, color:'var(--ink-700)' }}>English plus career coaching for Vietnamese learners in New Zealand.</span></div>
+              <div className="type-row"><span className="meta">Eyebrow · 11 / 700</span><span className="eyebrow">Starting soon</span></div>
+              <div className="type-row"><span className="meta">Mono · 12</span><span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:12, color:'var(--ink-500)' }}>props · variant · token</span></div>
+            </div>
+          </Block>
+
+          <Block name="Radii & shadow" purpose="Corner scale and elevation tokens used across cards, buttons and popovers.">
+            <div className="states">
+              {[['r-xs','6'],['r-sm','9'],['r-md','13'],['r-lg','18'],['r-xl','24'],['r-pill','999']].map(([t,px])=>(
+                <State key={t} label={t}><div style={{ width:62, height:62, background:'var(--a-100)', border:'1px solid var(--a-400)', borderRadius:'var(--'+t+')' }}></div></State>
+              ))}
+            </div>
+            <div className="states" style={{ marginTop:18 }}>
+              {['sh-1','sh-2','sh-card','sh-pop'].map(s=>(
+                <State key={s} label={s} plain><div style={{ width:120, height:62, background:'var(--surface)', borderRadius:'var(--r-md)', boxShadow:'var(--'+s+')' }}></div></State>
+              ))}
+            </div>
+          </Block>
+
+          <Block name="Icon · stroke set" purpose="Single 24-grid stroke icon. Inherits currentColor and size." props="<Icon name size=20 stroke=1.7 />">
+            <div className="grid-auto">
+              {ICONS.map(n=>(
+                <div key={n} className="icon-cell"><Icon name={n} size={22} /><span className="nm">{n}</span></div>
+              ))}
+            </div>
+          </Block>
+        </div>
+      </Section>
+
+      {/* ---- SHARED PRIMITIVES ---- */}
+      <Section num="02" title="Shared primitives">
+        <div className="blocks">
+
+          <Block name="Button" purpose="Primary action control. Gold primary reads as the main CTA; ghost and soft for secondary." props=".btn .btn-primary|accent|ghost|soft|zalo · .btn-sm · .btn-icon · [disabled]">
+            <div className="states">
+              <State label="primary"><button className="btn btn-primary">Save class</button></State>
+              <State label="primary · hover"><button className="btn btn-primary force-hover">Save class</button></State>
+              <State label="ghost"><button className="btn btn-ghost">Cancel</button></State>
+              <State label="ghost · hover"><button className="btn btn-ghost force-hover">Cancel</button></State>
+              <State label="soft"><button className="btn btn-soft">Details</button></State>
+              <State label="zalo"><button className="btn btn-zalo"><Icon name="zalo" size={16} />Zalo</button></State>
+            </div>
+            <div className="states" style={{ marginTop:14 }}>
+              <State label="with icon"><button className="btn btn-primary"><Icon name="plus" size={16} />Add student</button></State>
+              <State label="icon only"><button className="btn btn-ghost btn-icon"><Icon name="more" size={18} /></button></State>
+              <State label="small"><button className="btn btn-primary btn-sm">Invite</button></State>
+              <State label="loading"><button className="btn btn-primary"><span className="spin"></span>Saving</button></State>
+              <State label="disabled"><button className="btn btn-primary" disabled>Save class</button></State>
+            </div>
+          </Block>
+
+          <Block name="StatusBadge" purpose="Class lifecycle status pill with a colored dot." props="<StatusBadge status='active|soon|paused' /> · also .badge-warn">
+            <div className="states">
+              <State label="active"><StatusBadge status="active" /></State>
+              <State label="soon"><StatusBadge status="soon" /></State>
+              <State label="paused"><StatusBadge status="paused" /></State>
+              <State label="warn"><span className="badge badge-warn"><span className="dot"></span>Overdue</span></State>
+            </div>
+          </Block>
+
+          <Block name="Chip & Tag" purpose="Chip = selectable filter; Tag = static label." props=".chip · .chip.is-on · .tag">
+            <div className="states">
+              <State label="chip"><span className="chip"><Icon name="filter" size={14} />All levels</span></State>
+              <State label="chip · hover"><span className="chip force-hover"><Icon name="filter" size={14} />All levels</span></State>
+              <State label="chip · selected"><span className="chip is-on">IELTS</span></State>
+              <State label="tag"><span className="tag">B2</span></State>
+              <State label="tags"><span style={{display:'flex',gap:6}}><span className="tag">Grammar</span><span className="tag">Speaking</span></span></State>
+            </div>
+          </Block>
+
+          <Block name="Input field" purpose="Single-line text input. Focus ring uses the gold accent." props=".field · .is-error · [disabled] · [placeholder]">
+            <div className="states">
+              <State label="default" plain><input className="field" placeholder="Full name" style={{ width:200 }} /></State>
+              <State label="focus" plain><input className="field force-focus" defaultValue="Nguyen Thi Mai" style={{ width:200 }} /></State>
+              <State label="error" plain><input className="field is-error" defaultValue="bad@email" style={{ width:200 }} /></State>
+              <State label="disabled" plain><input className="field" defaultValue="Locked field" disabled style={{ width:200 }} /></State>
+            </div>
+          </Block>
+
+          <Block name="Avatar" purpose="Initial-based avatar with gradient fill. Optional ring and size." props="<Avatar name short color size=38 ring />">
+            <div className="states">
+              <State label="sm · 28"><Avatar name="Jane Pham" size={28} /></State>
+              <State label="md · 38"><Avatar name="Tran Bao" size={38} color="#2E9E6B" /></State>
+              <State label="lg · 52"><Avatar name="Le Minh Anh" size={52} color="#8A5A86" /></State>
+              <State label="ring"><Avatar name="Ms Jane" size={44} color="#F2B400" ring /></State>
+              <State label="initials"><Avatar short="EN" size={44} color="#2A6298" /></State>
+            </div>
+          </Block>
+
+          <Block name="FileIcon" purpose="Type-colored chip for a material or attachment." props="<FileIcon type size=42 /> · pdf doc slides audio video image link">
+            <div className="states">
+              {['pdf','doc','slides','audio','video','image','link'].map(t=>(
+                <State key={t} label={t}><FileIcon type={t} /></State>
+              ))}
+            </div>
+          </Block>
+
+          <Block name="Segmented" purpose="Single-select switch for small option sets (calendar range, view mode)." props="<Segmented options value onChange size='md|sm' />">
+            <div className="states">
+              <State label="3 options"><SegDemo /></State>
+              <State label="sm · with icon"><SegIconDemo /></State>
+            </div>
+          </Block>
+
+          <Block name="Toggle" purpose="Binary on / off switch. Gold when on." props="<Toggle on onChange size=26 />">
+            <div className="states">
+              <State label="off"><ToggleDemo start={false} /></State>
+              <State label="on"><ToggleDemo start={true} /></State>
+              <State label="small"><ToggleDemo start={true} size={20} /></State>
+              <State label="large"><ToggleDemo start={false} size={32} /></State>
+            </div>
+          </Block>
+
+          <Block name="Stat" purpose="KPI card with tone-colored icon, value and label." props="<Stat icon label value sub tone='brand|green|amber|plum' />">
+            <div className="states" style={{ alignItems:'stretch' }}>
+              <State label="brand" plain><div style={{ width:200 }}><Stat icon="students" label="Active students" value="248" sub="+12" tone="brand" /></div></State>
+              <State label="green" plain><div style={{ width:200 }}><Stat icon="check" label="Attendance" value="94%" sub="+3%" tone="green" /></div></State>
+              <State label="amber" plain><div style={{ width:200 }}><Stat icon="clock" label="To mark" value="17" tone="amber" /></div></State>
+              <State label="plum" plain><div style={{ width:200 }}><Stat icon="star" label="Avg score" value="7.5" tone="plum" /></div></State>
+            </div>
+          </Block>
+
+          <Block name="Tip" purpose="Hover tooltip wrapper around any trigger." props="<Tip label>{children}</Tip> · hover the icon">
+            <div className="states">
+              <State label="hover me"><Tip label="Send a reminder"><button className="btn btn-ghost btn-icon"><Icon name="bell" size={18} /></button></Tip></State>
+            </div>
+          </Block>
+
+          <Block name="Modal" purpose="Centered desktop dialog with title, sub and content slot." props="<Modal open onClose title sub width />">
+            <ModalDemo />
+          </Block>
+
+          <Block name="Sheet" purpose="Mobile bottom sheet with grab handle and title." props="<Sheet open onClose title />">
+            <SheetDemo />
+          </Block>
+
+        </div>
+      </Section>
+
+      {/* ---- COMPOSITES ---- */}
+      <Section num="03" title="Composites · by role">
+        <div className="blocks">
+
+          <Block name="Logo" purpose="EduNex wordmark with gradient mark. Light variant sits on dark surfaces; mark can stand alone." props="<Logo size light showText textSize /> · Shared">
+            <div className="states">
+              <State label="default"><Logo size={34} /></State>
+              <State label="mark only"><Logo size={34} showText={false} /></State>
+              <State label="small"><Logo size={24} /></State>
+              <State label="large"><Logo size={48} /></State>
+              <State label="light · on dark" plain><div style={{ background:'var(--p-900)', padding:'14px 18px', borderRadius:'var(--r-md)' }}><Logo size={34} light /></div></State>
+            </div>
+          </Block>
+
+          <Block name="StatCards" purpose="Admin KPI row: four Stat cards bound to centre metrics. Composes the Stat primitive." props="<StatCards /> · Admin">
+            <div style={{ width:'100%' }}><StatCards /></div>
+          </Block>
+
+          <Block name="ClassCard" purpose="Program summary: status badge, coach, schedule, room and quick actions. Status prop drives the badge and is the main variant." props="<ClassCard c openClass notify /> · Admin">
+            <div className="states" style={{ alignItems:'stretch' }}>
+              <State label="active" plain><div style={{ width:282 }}><ClassCard c={C_ACTIVE} openClass={noop} notify={noop} /></div></State>
+              <State label="starting soon" plain><div style={{ width:282 }}><ClassCard c={C_SOON} openClass={noop} notify={noop} /></div></State>
+              <State label="paused" plain><div style={{ width:282 }}><ClassCard c={C_PAUSED} openClass={noop} notify={noop} /></div></State>
+            </div>
+          </Block>
+
+          <Block name="SessionCard" purpose="Student timetable row: time range, class, coach, room and Zoom. The first card (i=0) flags Next up." props="<SessionCard s i open /> · Student">
+            <div className="states" style={{ alignItems:'stretch' }}>
+              <State label="next up · i=0" plain><div style={{ width:300 }}><SessionCard s={SESS} i={0} open={noop} /></div></State>
+              <State label="later · i>0" plain><div style={{ width:300 }}><SessionCard s={SESS} i={1} open={noop} /></div></State>
+            </div>
+          </Block>
+
+          <Block name="ZoomPanel" purpose="Per-class Zoom management: editable meeting URL and passcode with copy to clipboard." props="<ZoomPanel c notify /> · Admin">
+            <div style={{ width:'100%', maxWidth:540 }}><ZoomPanel c={C_ACTIVE} notify={noop} /></div>
+          </Block>
+
+        </div>
+      </Section>
+
+      <footer style={{ marginTop:64, paddingTop:20, borderTop:'1px solid var(--line)', fontSize:12.5, color:'var(--ink-400)', fontFamily:"'JetBrains Mono',monospace" }}>
+        EduNex Components · sourced from src/icons.jsx · src/ui.jsx · styles.css · edunex/theme.css · keep in sync with the screens
+      </footer>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Page />);
+</script>
+</body>
+</html>
