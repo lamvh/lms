@@ -1,7 +1,7 @@
 ---
 phase: 10
 title: "Polish & QA"
-status: pending
+status: done
 priority: P2
 effort: "3h"
 dependencies: [5, 7, 8, 9]
@@ -39,9 +39,9 @@ and finalize. No new features.
 - Em-dash guard test over `src/` rendered strings (or a lint script).
 
 ## Success Criteria
-- [ ] All cross-links work; full nav loop passes.
-- [ ] Responsive + a11y passes done; no console errors.
-- [ ] `npm run build` + full suite green; em-dash sweep empty.
+- [x] All cross-links work; full nav loop passes.
+- [x] Responsive + a11y passes done; no console errors.
+- [x] `npm run build` + full suite green; em-dash sweep empty.
 
 ## Risk Assessment
 - Visual drift only surfaces here: budget time to reconcile against prototype; treat mismatches as bugs. Without visual-regression automation, this reconciliation is manual, so do not rush it.

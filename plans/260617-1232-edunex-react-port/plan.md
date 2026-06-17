@@ -1,7 +1,7 @@
 ---
 title: "EduNex React Port (Components + Storybook → Landing → LMS)"
 description: "Port Claude Design EduNex prototype to React + Vite + Tailwind + TypeScript: component library + Storybook first (from the Components build contract), then landing page, then full LMS app"
-status: pending
+status: done
 priority: P2
 effort: ~36h
 branch: ""
@@ -61,7 +61,7 @@ after the system exists.
 | 7 | [Admin screens](./phase-07-admin-screens.md) | Done | 8h |
 | 8 | [Student app](./phase-08-student-app.md) | Done | 5h |
 | 9 | [Teacher app](./phase-09-teacher-app.md) | Done | 3h |
-| 10 | [Polish & QA](./phase-10-polish-qa.md) | Pending | 3h |
+| 10 | [Polish & QA](./phase-10-polish-qa.md) | Done | 3h |
 
 ## Dependency chain
 

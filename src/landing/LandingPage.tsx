@@ -65,7 +65,7 @@ function Hero() {
         </div>
         <div className="relative max-[980px]:max-w-[440px] max-[560px]:max-w-[330px] max-[560px]:mx-auto">
           <div className="absolute -top-10 -right-[30px] w-[300px] h-[300px] rounded-full -z-10 max-[560px]:w-[220px] max-[560px]:h-[220px]" style={{ background: 'radial-gradient(circle, rgba(242,180,0,.35), transparent 70%)' }} />
-          <ImageSlot id="hero-jane" src="/assets/ms-jane.png" radius={30} placeholder="Thả ảnh Ms. Jane / lớp học" className="block w-full aspect-[4/5.3] rounded-[30px] shadow-l-card border border-l-line bg-cream-2" />
+          <ImageSlot id="hero-jane" src="/assets/ms-jane.png" radius={30} placeholder="Thả ảnh Ms. Jane / lớp học" alt="Ms. Jane, nhà sáng lập EduNex" className="block w-full aspect-[4/5.3] rounded-[30px] shadow-l-card border border-l-line bg-cream-2" />
           <div className="absolute -left-[22px] bottom-[34px] bg-paper border border-l-line rounded-[18px] px-[18px] py-3.5 shadow-l-card flex items-center gap-3 max-[560px]:left-2.5 max-[560px]:bottom-3.5">
             <span className="w-[42px] h-[42px] rounded-full flex items-center justify-center font-head font-extrabold text-[#23252E]" style={{ background: 'linear-gradient(145deg,#FFC93D,#D29900)' }}>J</span>
             <div>
@@ -106,7 +106,7 @@ function Feature() {
     <section id="tieng-anh" className={secPad}>
       <div className={`${wrap} grid grid-cols-[1fr_1.05fr] gap-[54px] items-center max-[980px]:grid-cols-1 max-[980px]:gap-9`}>
         <div className="relative max-[980px]:order-first">
-          <ImageSlot id="english-photo" src="/assets/english-class.png" radius={26} placeholder="Thả ảnh lớp Tiếng Anh" className="block w-full aspect-[5/4.2] rounded-[26px] border border-l-line shadow-l-card bg-cream-2" />
+          <ImageSlot id="english-photo" src="/assets/english-class.png" radius={26} placeholder="Thả ảnh lớp Tiếng Anh" alt="Lớp học Tiếng Anh EduNex" className="block w-full aspect-[5/4.2] rounded-[26px] border border-l-line shadow-l-card bg-cream-2" />
           <div className="absolute -right-[18px] top-7 bg-paper border border-l-line rounded-2xl px-4 py-3 shadow-l-card flex items-center gap-2.5 font-semibold text-[13.5px] text-l-ink max-[560px]:right-2.5 max-[560px]:top-3.5">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#A9760B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 5l11 7-11 7z" /></svg>
             Học online qua Zoom
@@ -142,7 +142,7 @@ function Founder() {
     <section id="founder" className={`bg-paper border-y border-l-line-soft ${secPad}`}>
       <div className={`${wrap} grid grid-cols-[.85fr_1.15fr] gap-[54px] items-center max-[980px]:grid-cols-1 max-[980px]:gap-[34px]`}>
         <div className="relative max-[560px]:max-w-[340px] max-[560px]:mx-auto max-[560px]:w-full">
-          <ImageSlot id="founder-photo" src="/assets/ms-jane.png" radius={28} placeholder="Thả ảnh Ms. Jane" className="block w-full aspect-[4/5.2] rounded-[28px] border border-l-line shadow-l-card bg-cream" />
+          <ImageSlot id="founder-photo" src="/assets/ms-jane.png" radius={28} placeholder="Thả ảnh Ms. Jane" alt="Ms. Jane Trần" className="block w-full aspect-[4/5.2] rounded-[28px] border border-l-line shadow-l-card bg-cream" />
         </div>
         <div>
           <span className={kicker}>Nhà sáng lập</span>

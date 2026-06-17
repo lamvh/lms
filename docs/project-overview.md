@@ -150,6 +150,17 @@ See the plan for phase detail and status.
 
 > Add an entry per feature / change. Format: `### YYYY-MM-DD · summary` then bullets.
 
+### 2026-06-17 · Phase 10 done: polish & QA — port complete
+- Repo-wide em-dash sweep: fixed 3 visible material titles in sample data (` · ` instead of `—`);
+  remaining em-dashes are code comments only, not user-visible copy.
+- Accessibility pass: alt text on all 3 landing `ImageSlot` photos; `aria-label` on notification bells.
+- Added `nav-loop.test.tsx` integration test: landing → login → student → sign out → login, plus the
+  admin login/sign-out loop.
+- Final QA all green: 63 tests, `npm run build`, `npm run build-storybook`, dev server (all routes 200,
+  no console errors). Playwright visual regression deferred per plan (TDD = behavior/render; visual manual).
+- **EduNex React port complete** — all 10 phases done. Landing + Storybook + LMS (login, admin, student,
+  teacher) live and wired.
+
 ### 2026-06-17 · Phase 9 done: teacher app
 - Built the coach desktop workspace (`TeacherApp`, Ms. Jane) at `/teacher`: sidebar with badge counts
   (today sessions, submissions to mark) + 5 views — Today's Classes, My Classes, Homework to Mark

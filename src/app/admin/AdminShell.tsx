@@ -92,7 +92,7 @@ function Topbar() {
           className="border-none bg-transparent text-[13.5px] flex-1 outline-none text-ink-700"
         />
       </div>
-      <Button variant="ghost" iconOnly className="relative" onClick={() => notify('3 new notifications', 'bell')}>
+      <Button variant="ghost" iconOnly className="relative" aria-label="Notifications" onClick={() => notify('3 new notifications', 'bell')}>
         <Icon name="bell" size={19} />
         <span className="absolute top-[7px] right-2 w-[7px] h-[7px] rounded-full bg-danger border-[1.5px] border-white" />
       </Button>
