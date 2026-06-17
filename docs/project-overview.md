@@ -150,6 +150,16 @@ See the plan for phase detail and status.
 
 > Add an entry per feature / change. Format: `### YYYY-MM-DD · summary` then bullets.
 
+### 2026-06-17 · Phase 4 done: composites & data (component library complete)
+- Typed sample-data model `src/data/edunex.ts` + `src/types/edunex.ts` (teachers, classes, students,
+  materials, templates, znsLog, homework, submissions, results, payments, stats + lookups), preserving
+  the load-bearing init order (zoom/roster/focusStudent/stats). 5 data tests.
+- 5 composites: Logo, StatCards, ClassCard (active/soon/paused), SessionCard (next-up/later),
+  ZoomPanel (editable URL + passcode, copy). `to12` time helper. Each with stories.
+- 11 new tests (data + ClassCard/SessionCard/ZoomPanel/to12) — 34 total passing.
+- **Storybook now covers the entire build contract** (foundations + 13 primitives + 5 composites).
+- Verified: 34 tests, `build`, `build-storybook` all green.
+
 ### 2026-06-17 · Phase 3 done: shared primitives
 - Ported all 13 section-02 primitives to Tailwind components: Button (5 variants · sm · icon · loading ·
   disabled), StatusBadge, Chip, Tag, Field, Avatar, FileIcon, Segmented, Toggle, Stat, Tip, Modal, Sheet.

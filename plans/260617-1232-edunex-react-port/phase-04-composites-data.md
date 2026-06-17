@@ -1,7 +1,7 @@
 ---
 phase: 4
 title: "Composites & sample data"
-status: pending
+status: done
 priority: P1
 effort: "4h"
 dependencies: [3]
@@ -67,11 +67,11 @@ complete and screen assembly can begin.
 - `ZoomPanel.test.tsx`: copy button calls `notify` (clipboard mocked).
 
 ## Success Criteria
-- [ ] Typed data model compiles under strict TS; derived fields intact.
-- [ ] All 5 composites render and match prototype styling across their states.
-- [ ] Each composite has a stories file; Storybook section 03 mirrors the Components page.
-- [ ] Storybook now covers the FULL build contract (foundations + primitives + composites).
-- [ ] Tests green.
+- [x] Typed data model compiles under strict TS; derived fields intact.
+- [x] All 5 composites render and match prototype styling across their states.
+- [x] Each composite has a stories file; Storybook section 03 mirrors the Components page.
+- [x] Storybook now covers the FULL build contract (foundations + primitives + composites).
+- [x] Tests green.
 
 ## Risk Assessment
 - Data init order (zoom/roster/focusStudent mutate after array creation): preserve exact sequence or
